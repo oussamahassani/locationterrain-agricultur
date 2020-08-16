@@ -10,6 +10,7 @@ let personne = require("./routes/users")
 let annonce = require ("./routes/properties")
 let favorite = require ("./routes/favorite")
 let message = require ("./routes/messages")
+const Port = process.env.Port  || 4000
 app.use(cookieParser())
 require('events').EventEmitter.defaultMaxListeners = 25
 
@@ -89,6 +90,6 @@ app.post('/upload',function(req, res , next) {
 app.get('/',function(req,res){
   return res.send('Hello Server')
 })
-app.listen(4000 ,() => {
-  console.log("Server running on port 4000");
+app.listen(Port ,() => {
+  console.log("Server running on port ")+Port;
 });
