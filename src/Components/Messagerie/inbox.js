@@ -2,66 +2,108 @@ import React, { Component } from "react";
 import { InboxHtml } from "./inboxx";
 import ModalCompose from "./modalcompose";
 import ModalMessage from "./modelmessage";
-import messages from "./messageFake .json";
-
+import {connect} from 'react-redux'
+import {getmessages,updatemessages,delatemessage} from '../../action/messagerie'
+import Cookies from 'js-cookie'
+import Axios from 'axios'
+import {URL} from '../../api/Url'
 export class Inbox extends Component {
   constructor(props) {
     super(props);
-    this.markRead = this.markRead.bind(this);
+   /* this.markRead = this.markRead.bind(this);
     this.doShow = this.doShow.bind(this);
     this.doDelete = this.doDelete.bind(this);
     this.toggleMark = this.toggleMark.bind(this);
     this.toggleMarkAll = this.toggleMarkAll.bind(this);
     this.deleteMarked = this.deleteMarked.bind(this);
     this.refreshMessages = this.refreshMessages.bind(this);
-    this.deleteMessages = this.deleteMessages.bind(this);
+    this.deleteMessages = this.deleteMessages.bind(this);*/
     this.ModalMessage = React.createRef();
     this.ModalCompose = React.createRef();
     this.state = {
-      initMessages: messages,
-      messages: messages,
+      initMessages:[] ,
+      messages: "",
       selected: {},
-      deleted: []
+      deleted: [],
+      draft : []
     };
   }
-
-  markRead(idx) {
+ componentDidMount(){
+Axios.get(URL + `app/getcurentemail/${Cookies.get("_id")}`)
+  .then(res => {console.log(res.data)
+  this.setState({initMessages : [res.data]})}
+  )
+  this.props.getmessages(this.props.id)
+ }
+ static getDerivedStateFromProps(nextProps, prevState) {
+  if(nextProps.message!== prevState.messages ){
+    //Perform some operation
+   
+    return { messages: nextProps.message.filter(el => el.deleted ==false && el.draft ==false)  ,deleted: nextProps.message.filter(el => el.deleted ==true) ,draft: nextProps.message.filter(el => el.draft ==true &&  el.deleted ==false)   };
+  }
+  else return null; // Triggers no change in the state
+}
+  markRead = (idx)  => {
     /* mark this message as read */
     let messages = [...this.state.messages];
+    this.props.updatemessages(this.state.messages[idx]._id)
     messages[idx].read = true;
     this.setState({ messages });
   }
 
-  doShow(idx) {
-    this.markRead(idx);
+  doShow = (idx)  =>{
+    this.markRead(idx)
     this.setState({
-      selected: messages[idx]
+      selected: this.state.messages[idx]
     });
-    /* open message in modal */
-  }
+   }
+   doDeletedraft= (idx) => {
 
-  doCompose() {
+    this.props.delatemessage(this.state.draft[idx]._id)
+    let messages =this.state.draft.splice(idx, 1);
+    this.setState({ deleted : [...this.state.deleted,messages] });
+
+   }
+   markReaddraft = (idx)  => {
+    /* mark this message as read */
+    let deleted = [...this.state.draft];
+    console.log("delated" , deleted)
+  console.log("message" , deleted[idx])
+  
+  }
+   doShowdraft = (idx) => {
+    this.markReaddraft(idx)
+     console.log(idx)
+    this.setState({
+      selected: this.state.draft[idx]
+    });
+   }
+    /* open message in modal */
+
+  doCompose = () => {
     /* open compose modal */
     this.ModalCompose.current.show();
   }
 
-  toggleMark(idx) {
+  toggleMark = (idx) => {
     let messages = [...this.state.messages];
     messages[idx].marked = messages[idx].marked ? 0 : 1;
     this.setState({ messages });
   }
 
-  doDelete(idx) {
-    let messages = [...this.state.messages];
-    let deleted = [...this.state.deleted];
+  doDelete = (idx) =>  {
     /* append it to deleted */
-    deleted.push(messages[idx]);
+   let xelement = this.state.messages[idx]._id
+    let detlated = this.state.messages.filter(el => el._id !== xelement)
     /* remove the message at idx */
-    messages.splice(idx, 1);
-    this.setState({ messages, deleted });
+    /*update base */
+    this.props.delatemessage(this.state.messages[idx]._id)
+    let messages =this.state.messages.splice(idx, 1);
+    this.setState({ deleted : [...this.state.deleted,messages] });
+ 
   }
 
-  toggleMarkAll() {
+  toggleMarkAll = ()  => {
     let messages = [...this.state.messages];
     messages.map((v, k) => {
       return (v.marked = v.marked ? 0 : 1);
@@ -69,27 +111,20 @@ export class Inbox extends Component {
     this.setState({ messages });
   }
 
-  deleteMarked() {
-    var self = this;
+  deleteMarked = ()  => {
     let messages = [...this.state.messages];
-    var tbd = [];
-    for (var k = 0; k < messages.length; k++) {
-      if (messages[k].marked === 1) {
-        tbd.push(k);
+    for (let i = 0;  i< messages.length; i++) {
+      if (messages[i].marked === 1) {
+        this.props.delatemessage(messages[i]._id)
+       console.log("marked",messages[i]._id)
       }
     }
 
-    if (tbd.length > 0) {
-      self.deleteMessages(tbd);
-    }
+  
   }
 
-  refreshMessages() {
-    let initMessages = [...this.state.initMessages];
-    this.setState({ messages: initMessages });
-  }
-
-  deleteMessages(arr) {
+  
+  deleteMessages =(arr)  => {
     let messages = [...this.state.messages];
     let deleted = [...this.state.deleted];
     for (var i = arr.length - 1; i >= 0; i--) {
@@ -101,13 +136,24 @@ export class Inbox extends Component {
 
   render() {
     return (
-      <div>
+
+      <div> {this.state.messages ? <>
         <InboxHtml parent={this} />
-        <ModalCompose sendTo={this.state.selected.fromAddress} />
-        <ModalMessage ref={this.ModalMessage} message={this.state.selected} />
+        <ModalCompose sendTo={this.state.selected.fromAddress} subject = {this.state.selected.subject } idcobversation={this.state.selected._id} initmessage = {this.state.initMessages} /></>
+     : null }
       </div>
     );
   }
 }
+const mapstatetoprops = (state) => ({
+  message : state.message
+  
+ })
+ const mapdispatchtoprops = (disptach) => ({
+  getmessages : (id) => disptach(getmessages(id)),
+  updatemessages : (id) => disptach(updatemessages(id)),
+  delatemessage : (id) => disptach(delatemessage(id))
 
-export default Inbox;
+ 
+ })
+export default connect (mapstatetoprops,mapdispatchtoprops)(Inbox);

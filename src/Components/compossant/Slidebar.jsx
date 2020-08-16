@@ -1,16 +1,20 @@
-import React from "react";
+import React ,{Component} from "react";
 import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import Cookies from 'js-cookie'
 
-const Sidebar = () => {
-  
+
+class Sidebar  extends Component {
+
+  render()
+  {
+
     return (
-        <>
+        < div className="bagroundcolor-slider">
        
        <div class="row" id="body-row">
  
-    <div id="sidebar-container" className="sidebar-expanded d-none d-md-block">
+    <div id="sidebar-container" className="sidebar-expanded  ">
         
         <ul className="list-group">
       
@@ -27,6 +31,9 @@ const Sidebar = () => {
             </a>
           
             <div id='submenu1' className="collapse sidebar-submenu">
+            {Cookies.get("typeuser") == "admin"?   <NavLink to="/statestique" className="list-group-item list-group-item-action bg-dark text-white">
+                    <span className="menu-collapsed">Statestique</span>
+             </NavLink>  : null }
             {Cookies.get("typeuser") =="admin"?     <NavLink to="/gestionuser" className="list-group-item list-group-item-action bg-dark text-white">
                     <span className="menu-collapsed">Gestion utilisateur</span>
     </NavLink> : null }
@@ -39,8 +46,8 @@ const Sidebar = () => {
               {Cookies.get("typeuser") =="proprietaire"?  <NavLink to="/gestionannonce"  activeClassName="active"  className="list-group-item list-group-item-action bg-dark text-white">
                     <span className="menu-collapsed">Gestion annonces</span>
              </NavLink> : null }
-              { Cookies.get("typeuser") =="demandeur"? <NavLink  to="/mesannonce" activeClassName="active" className="list-group-item list-group-item-action bg-dark text-white">
-                    <span className="menu-collapsed">Mes annonces annonces</span>
+              { Cookies.get("typeuser") =="proprietaire"? <NavLink  to="/mesannonce" activeClassName="active" className="list-group-item list-group-item-action bg-dark text-white">
+                    <span className="menu-collapsed">Mes annonces</span>
                 </NavLink> : null }
             </div>
             <a href="#submenu2" data-toggle="collapse" aria-expanded="false" className="bg-dark list-group-item list-group-item-action flex-column align-items-start">
@@ -52,18 +59,19 @@ const Sidebar = () => {
             </a>
          
             <div id='submenu2' className="collapse sidebar-submenu">
-                <a href={`/userprofil/${Cookies.get("_id")}`} className="list-group-item list-group-item-action bg-dark text-white">
+                <NavLink to={`/userprofil/${Cookies.get("_id")}`} className="list-group-item list-group-item-action bg-dark text-white">
                     <span className="menu-collapsed">Settings</span>
-                </a>
+                </NavLink>
                
             </div>
+            {/*
             <a href="#" className="bg-dark list-group-item list-group-item-action">
                 <div className="d-flex w-100 justify-content-start align-items-center">
                     <span className="fa fa-tasks fa-fw mr-3"></span>
                     <span className="menu-collapsed">Tasks</span>
                 </div>
             </a>
-        
+            */ }
             <li className="list-group-item sidebar-separator-title text-muted d-flex align-items-center menu-collapsed">
                 <small>OPTIONS</small>
             </li>
@@ -74,12 +82,12 @@ const Sidebar = () => {
                     <span className="menu-collapsed">Calendar</span>
                 </div>
             </a>
-            <a href={"/Boite-messagerie/" + Cookies.get("_id")} className="bg-dark list-group-item list-group-item-action">
+      {Cookies.get("typeuser") !== "admin"?    <NavLink to={`/Boite-messagerie/${Cookies.get("_id")}`} className="bg-dark list-group-item list-group-item-action">
                 <div className="d-flex w-100 justify-content-start align-items-center">
                     <span className="fa fa-envelope-o fa-fw mr-3"></span>
-                    <span className="menu-collapsed">Messages <span className="badge badge-pill badge-primary ml-2">5</span></span>
+        <span className="menu-collapsed">Messages </span> <span className="badge badge-pill badge-primary ml-2">{this.props.message}</span>
                 </div>
-            </a>
+        </NavLink> : null }
          
             <li className="list-group-item sidebar-separator menu-collapsed"></li>
      
@@ -89,19 +97,25 @@ const Sidebar = () => {
                     <span className="menu-collapsed">Help</span>
                 </div>
             </a>
+            {/*
             <a href="#top" data-toggle="sidebar-colapse" className="bg-dark list-group-item list-group-item-action d-flex align-items-center">
                 <div className="d-flex w-100 justify-content-start align-items-center">
                     <span id="collapse-icon" className="fa fa-2x mr-3"></span>
                     <span id="collapse-text" className="menu-collapsed">Collapse</span>
                 </div>
             </a>
+            */}
         </ul>
     </div>
  </div>
-        </>
+        </div>
     );
     }
-const mapStateToProps = (state) => {
-   
-  }
-export default connect(mapStateToProps,null)(Sidebar) ;
+}
+const mapstatetoprops = (state) => ({
+
+})
+const mapdispatchtoprops =(dispatch) => ({
+
+})
+export default connect (mapstatetoprops,mapdispatchtoprops) (Sidebar);  

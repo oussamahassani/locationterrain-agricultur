@@ -29,10 +29,10 @@ export class GestionUser extends Component  {
    <div className="row">
     
   </div>
-  <div class="ui input">
+  <div className="ui input">
   <input type="text" placeholder="name,email,role ou poste  ocuper" onChange={(e) => this.onchange(e)}></input><button className="ui inverted primary button colorwhitee" onClick={() => this.recherche()}>Recherche</button>
      </div>
-       <table class="ui celled striped table">
+       <table className="ui celled striped table">
            <thead>
                <tr><th   className="bagroundcolorred" colspan="7">
                   Liste User

@@ -164,7 +164,7 @@ checkFileSize=()=>{
         <form onSubmit={this.handleSubmit}>
         <div className="row">
     <div className="col">
-  
+    <label >Photo d'annonce:</label>
           <input
             type="file"
             name="image"
@@ -181,7 +181,7 @@ checkFileSize=()=>{
             name="price"
             placeholder="Prix"
             onChange={this.handleChange}
-          /> </div></div>{" "}
+          /> DT</div></div>{" "}
           <br />
           <div className="row">
           <div className="col">
@@ -189,28 +189,28 @@ checkFileSize=()=>{
           required
             type="text"
             name="espace"
-            placeholder="espace"
+            placeholder="Espace"
             onChange={this.handleChange}
-          />{" "}
+          />{" "} m²
           </div>
-          <div class="col">
+          <div className="col">
           <input
           required
             type="number"
             name="longitude"
-            placeholder="longitude"
+            placeholder="Longitude"
             onChange={this.handleChange}
           />{" "}</div></div>   <br />
-          <div class="row">
-           <div class="col">
+          <div className="row">
+           <div className="col">
           <input
           required
             type="number"
             name="altitude"
-            placeholder="altitude"
+            placeholder="Altitude"
             onChange={this.handleChange}
           />{" "}</div>
-      <div class="col">
+      <div className="col">
           <input
           required
             type="text"
@@ -232,7 +232,7 @@ checkFileSize=()=>{
           </div>
         <div className="col">
           <select   name="province" onChange={this.handleChange}>
-	<option selected="selected" value="">ville</option>
+	<option selected="selected" value="">Ville</option>
 	<option value="Beja">Beja</option>
 	<option value="Bizerte">Bizerte</option>
 	<option value="El Kef">El Kef</option>

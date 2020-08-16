@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
-
+import Sidebar from './Slidebar'
 export default class Helper extends Component {
     render() {
         return (
+            < div className="flexflex">
+            <Sidebar/>
             <div className="container">
             <div className="padding-allannonce">
              <div class="how-section1">
@@ -55,6 +57,7 @@ export default class Helper extends Component {
                         </div>
                     </div>
                 </div>   
+            </div>
             </div>
             </div>
         )

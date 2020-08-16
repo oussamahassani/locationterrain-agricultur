@@ -5,7 +5,6 @@ import swal from "sweetalert";
 export const Getalluser =  () =>  {  return (dispatch) =>
     apipersonne.getalluser
     .then(res =>  {console.log(res);
-        swal("Good job!", "Votre donner donner a eté enregistrer", "success");
 
         dispatch(gettalluser(res.data))
     })
@@ -16,20 +15,28 @@ export const login = (email , pass) => {
      apipersonne.login(email,pass)
         .then(res => { console.log('set-cookie header value', res.headers);
         if (Cookies.get("jwt"))
-        window.location.href = "http://localhost:3000/admin";
+        {
+            window.location.replace("http://localhost:3000/admin");
+            //window.location.href = "http://localhost:3000/admin";
         dispatch(decodetoken(Cookies.get("jwt")));
-         ;})
+         }
+         if (res.data.msg)
+         swal("OUUUPS!",res.data.msg, "error");
+        })
     .catch(err => console.log(err))
 }
 export const signup = (newuser) =>  { return (dispatch) => 
     apipersonne.registeruser(newuser)
-    .then(res => console.log(res))
+    .then(res => {console.log(res)
+        swal("Good job!", "Votre donner donner a eté enregistrer", "success");
+    
+    })
     .catch(err => console.log(err) )
 
 }
 export const getoneuser = (id) => { return (dispatch) => 
     apipersonne.getoneuserfromdb(id)
-    .then(res =>  {console.log(res.data);
+    .then(res =>  {
         dispatch(updateuserreducer(res.data))
     })
     .catch(err => console.log(err))

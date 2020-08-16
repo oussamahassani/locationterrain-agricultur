@@ -50,63 +50,70 @@ const MesannonceTableComponent = (props) => {
   const columns = [
     {
       dataField: "idannonce",
-      text: "idannonce",
+      text: "Id",
       sort: true,
-      filter: textFilter(),
+      filter: textFilter({
+        placeholder: 'N°'}),
       headerStyle: () => {
-        return { width: "10%" };
+        return { width: "5%" };
       },
     },
     {
       dataField: "price",
-      text: "price",
+      text: "Prix",
       sort: true,
-      filter: textFilter(),
+      filter: textFilter({
+        placeholder: 'Prix'}),
       headerStyle: () => {
         return { width: "10%" };
       },
     },
     {
       dataField: "espace",
-      text: "espace",
+      text: "Espace",
       sort: true,
-      filter: textFilter(),
+      filter: textFilter({
+        placeholder: 'espace'}),
       headerStyle: () => {
         return { width: "10%" };
       },
     },
     {
       dataField: "longitude",
-      text: "longitude",
+      text: "Longitude",
       sort: true,
-      filter: textFilter(),
+      filter: textFilter({
+        placeholder: 'long'}),
       headerStyle: () => {
         return { width: "10%" };
       },
     },
     {
       dataField: "altitude",
-      text: "altitude",
+      text: "Altitude",
       sort: true,
-      filter: textFilter(),
+      filter: textFilter({
+        placeholder: 'alti'}),
       headerStyle: () => {
         return { width: "10%" };
       },
     },
     {
-      dataField: "houseNumber",
-      text: "houseNumber",
+      dataField: "typelocation",
+      text: "Type location",
       sort: true,
-      filter: textFilter(),
+      filter: textFilter({
+        placeholder: 'type'}),
       headerStyle: () => {
         return { width: "10%" };
       },
     },
     {
       dataField: "street",
-      text: "street",
+      text: "Rue",
       sort: true,
-      filter: textFilter(),
+      filter: textFilter({
+        placeholder: 'Rue'}),
       headerStyle: () => {
         return { width: "10%"};
       },
@@ -125,7 +132,7 @@ const MesannonceTableComponent = (props) => {
         return (
           <div className="flex-bettwen">
             <Mid donner= {row} />
-            <Link to={"edit/" + row._id}>
+            <Link to={"UpdateAnnonce/" + row._id}>
               <button  className="btn btn-warning">
               <i class="fa fa-pencil" aria-hidden="true"></i>
               </button>
@@ -147,8 +154,16 @@ const MesannonceTableComponent = (props) => {
 
   return (
     <Container >
-      {console.log(props.annonce )}
-      {props.annonce ? (
+      <h2>Gestion Mes Annonce</h2>
+    <Col>
+                  <Link to="/createListing">
+                    <button className="btn btn-success"  labelPosition="left">
+                   
+                      Ajouter une annonces
+                    </button>
+                  </Link>
+                </Col>
+      {props.annonce.filter(annonce => annonce.idcreateur == Cookies.get('_id')).length > 0? (
         <ToolkitProvider
           bootstrap4
           keyField="id"
@@ -162,14 +177,7 @@ const MesannonceTableComponent = (props) => {
 
             <div>
               <Row>
-                <Col>
-                  <Link to="/createListing">
-                    <button className="btn btn-success"  labelPosition="left">
-                   
-                      Ajouter une annoces
-                    </button>
-                  </Link>
-                </Col>
+                
                 {/* <button><ExportCSVButton { ...props.csvProps }>Enregistrez</ExportCSVButton></button> */}
                 <Col>
                 <Link >
@@ -205,7 +213,7 @@ const MesannonceTableComponent = (props) => {
           /*-search---------------------- */
           <div className="text-center">
             { (
-              <h4>prosuit existe pas</h4>
+              <h4>Vous n'avez pas encore d'annonce</h4>
             )}
           </div>
         )}

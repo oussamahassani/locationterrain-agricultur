@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import { InputGroup, InputGroupAddon, InputGroupText, Input,Form } from 'reactstrap';
+import { InputGroup, InputGroupAddon, InputGroupText, Input,Form,Label } from 'reactstrap';
 import {Getanonces,updateannoces} from '../../../action/Annonce'
 import {connect} from 'react-redux'
 let  donner = []
@@ -15,8 +15,6 @@ class UpdateAnnonce  extends Component{
 
 render() {
 donner = this.props.annoce.filter(annonce => annonce._id ==this.props.match.params.id)
-console.log(this.props.annoce ,this.props.match.params.id)
-
 
   return (
     <div className="container">
@@ -24,6 +22,7 @@ console.log(this.props.annoce ,this.props.match.params.id)
         <h4>Modifier annonce</h4>
      { donner.map( annonce => 
      <>
+     <Label >Prix: </Label>
       <InputGroup>
         <InputGroupAddon addonType="prepend">
           <InputGroupText><i class="fa fa-money" aria-hidden="true"></i>
@@ -32,6 +31,7 @@ console.log(this.props.annoce ,this.props.match.params.id)
         <Input placeholder="prix" defaultValue = {annonce.price} onChange= {(e) => donner[0].price = e.target.value}/>
       </InputGroup>
       <br />
+      <Label >Espace: </Label>
       <InputGroup>
         <InputGroupAddon addonType="prepend">
           <InputGroupText>
@@ -42,12 +42,16 @@ console.log(this.props.annoce ,this.props.match.params.id)
         <Input placeholder="espace" defaultValue = {annonce.espace}  onChange= {(e) => donner[0].espace = e.target.value}/> 
       </InputGroup>
       <br />
-         <label >Type de bien :</label>
-         <select class="btn-block btn-sm">
-         <option value="terre"> terre</option>
-         <option value="materiel"> materiel</option>
-         </select>
+      <Label >Type de bien : </Label>
+      <Input type="select" name="select"  >
+        <option value={annonce.typebien} selected>{annonce.typebien}</option>
+       {annonce.typebien == "Materiel" ? null  : <option  value="Materiel">Materiel</option>}
+       {annonce.typebien == "Terre" ? null  :  <option value="Terre">Terre</option>}
+        
+   
+        </Input>
          <br />
+         <Label >Longitude   ET Altitude: </Label>
       <InputGroup>
         <InputGroupAddon addonType="prepend">  <InputGroupText><i class="fa fa-map" aria-hidden="true"></i>
         </InputGroupText>
@@ -57,7 +61,20 @@ console.log(this.props.annoce ,this.props.match.params.id)
         </InputGroupText>
         </InputGroupAddon>
         <Input placeholder="Altitude"  defaultValue={annonce.altitude} onChange= {(e) => donner[0].altitude = e.target.value}/>
+      </InputGroup> <br/>
+      <Label>type location</Label>
+      <Input type="select" name="select"  >
+         <option  value= {annonce.typelocation} > {annonce.typelocation}</option>
+         {annonce.typelocation == "Pourcentage" ? null  :   <option value="Pourcentage"> Pourcentage</option>}
+         {annonce.typelocation == "Location" ? null  :<option value="Location"> Location</option> }
+         </Input>
+      <Label >Description: </Label>
+      <InputGroup>
+        <InputGroupAddon addonType="prepend">
+        </InputGroupAddon>
+        <textarea  class="btn-block" rows="6" cols="50" defaultValue = {annonce.description}  onChange= {(e) => donner[0].description = e.target.value}></textarea>
       </InputGroup>
+      
       </>
      
      )

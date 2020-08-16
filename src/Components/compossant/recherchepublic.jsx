@@ -1,36 +1,20 @@
 import React ,{Component}  from 'react'
-let espace = ""
-let prix = ""
+
 export default class Recherche extends Component {
- 
+  state = {
+    espace : "",
+    prix : "",
+    ville  : ""
+  }
+  change =(event) => {
+   let name = event.target.name
+    this.setState({[name]: event.target.value});
+}
   render(){
     return (
         <div>
             <div>
     <br/>
-	{ /*<div class="row justify-content-center">
-                        <div class="col-12 col-md-10 col-lg-8">
-                            <div class="card card-sm">
-                                <div class="card-body row no-gutters align-items-center">
-                                    <div class="col-auto">
-                                 
-                                    </div>
-                                
-                                    <div class="col">
-                                 
-
-                                        <input class="form-control form-control-lg form-control-borderless" type="search" placeholder="Nom annonce  Adreesse" onChange = {(e) => contenu= e.target.value} />
-                                    </div>
-                                
-                                    <div class="col-auto">
-                                        <button class="btn btn-lg btn-success" onClick={() => this.props.rechercheannonce(contenu)}>Rechercher    <i class="fa fa-search" aria-hidden="true"></i></button>
-                                    </div>
-                               
-                                </div>
-                         </div>
-                        </div>
-                 
-    </div> */}
 <section>
     <div id="carouselExampleFade" className="carousel slide carousel-fade" data-ride="carousel">
         <div className="carousel-inner">
@@ -62,13 +46,25 @@ export default class Recherche extends Component {
                 <div className="col-lg-12">
                     <div className="row">
                         <div className="col-lg-3 col-md-3 col-sm-12 p-0">
-                            <input type="text" className="form-control search-slt" placeholder="prix " onChange = {(e) => prix= e.target.value}/>
+ 
+                            <input type="text" className="form-control search-slt" placeholder="Prix " name="prix"  onChange = {this.change}/>
                         </div>
-                        <div className="col-lg-3 col-md-3 col-sm-12 p-0">
-                            <input type="text" className="form-control search-slt" placeholder="espace" onChange = {(e) => espace= e.target.value}/>
-                        </div>
-                        <select name="DropDownList_City"   name="province" onChange={this.handleChange}>
-	<option selected="selected" value="">ville</option>
+                      {/* <div className="col-lg-3 col-md-3 col-sm-12 p-0">
+                            <input type="text" className="form-control search-slt" placeholder="espace" name="espace" onChange = {this.change}/>
+                        </div>   */}
+ 
+                        <select className="col-lg-3" onChange = {this.change}  name="espace" onChange={this.change} value={this.state.espace}>
+	<option selected="selected" value="">Espace</option>
+	<option value="500"> 500  m² =&#x3E;</option>
+	<option value="1500"> 1500 m² =&#x3E;</option>
+	<option value="3000">3000 m² =&#x3E; </option>
+	<option value="5000">5000 m² =&#x3E; </option>
+	<option value="5000">  5000 m² =&#x3E;</option>
+
+
+</select>
+                        <select name="DropDownList_City"   name="ville" onChange={this.change} value={this.state.ville}>
+	<option selected="selected" value="">Ville</option>
 	<option value="Beja">Beja</option>
 	<option value="Bizerte">Bizerte</option>
 	<option value="El Kef">El Kef</option>
@@ -98,7 +94,7 @@ export default class Recherche extends Component {
 
 </select>
                         <div className="col-lg-3 col-md-3 col-sm-12 p-0">
-                            <button type="button" className="btn btn-danger wrn-btn" onClick={() => this.props.rechercheannonce(espace,prix)}>Rechercher</button>
+                            <button type="button" className="btn btn-danger wrn-btn" onClick={() => this.props.rechercheannonce(this.state.espace,this.state.prix,this.state.ville)}>Rechercher</button>
                         </div>
                     </div>
                 </div>

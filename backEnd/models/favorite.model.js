@@ -5,24 +5,16 @@ const Schema = mongoose.Schema;
 
 const favoriteSchema = new Schema(
   {
+    idannonceorigin: {
+      type: String,
+    },
     idannonce: {
       type: Number,
     },
     price: {
       type: Number,
     },
-    bedrooms: {
-      type: Number,
-    },
-    bathrooms: {
-      type: Number,
-    },
-    area: {
-      type: Number,
-    },
-    houseNumber: {
-      type: Number,
-    },
+  
     street: {
       type: String,
     },
@@ -40,8 +32,26 @@ const favoriteSchema = new Schema(
     },
     image: {
       type: String,
-    }
+    },
+    nomuser:{
+type:String
+    },
+  prenomuser:{
+    type:String
   },
+  emailuser:{
+type:String
+  },
+  numtel:{
+    type:Number
+  },
+  datecreation:{
+    type:String
+  },
+  Utilisateur:{
+    type:String
+  }
+  }
   
 );
 favoriteSchema.plugin(autoIncrement.plugin, { model: 'favorite', field: 'idannonce' , startAt: 1 })

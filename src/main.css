@@ -62,6 +62,9 @@
   .site-blocks-cover .display-1 {
     font-size: 3rem;
   }
+  .hide{
+    display: none;
+  }
 }
 
 .centre{

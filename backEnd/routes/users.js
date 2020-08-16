@@ -25,6 +25,8 @@ transport.verify((error, success) => {
 });
 
 router.route("/getalluser").get((req, res) => {
+  res.header("Access-Control-Allow-Origin", "http://localhost:3000"); 
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   User.find()
     .then(users => res.json(users))
     .catch(err => res.status(400).json("Error: " + err));
@@ -36,7 +38,7 @@ router.route("/getoneuser/:id").get((req, res) => {
 });
 router.route('/getcurentemail/:id').get((req,res) => {
   User.findById(req.params.id)
-  .then(User => res.json(User.email))
+  .then(User => res.json({email : User.email , Nom : User.Nom , Prenom : User.Prenom}))
   .catch(err => res.status(200).json("Error: " + err));
 })
 router.route("/registeruser").post((req, res) => {
@@ -110,13 +112,13 @@ router.post('/loginuser',async (req, res, next) => {
     {
     const token  = jwt.sign({_id : user._id , typeuser: user.typeuser },"Bearer");
   
-   res.cookie('jwt',token).send("set-cookie header sent with maxAge of 30 days")
+   res.cookie('jwt',token).send("ok")
     }
     else
       res.send({msg : "mot de passe invalide"})
 }
   else 
-  res.send({msg :"user not found"})
+  res.send({msg :"donner invalide"})
   }
   catch(err)
   {

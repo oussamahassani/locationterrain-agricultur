@@ -1,9 +1,11 @@
 /* annoce */
 export const GETALLANNONCE ="GETALLANNONCE" ;
 export const GETONEANNONCE = "GETONEANNONCE";
+export const  GETALLANNONCEE ="GETALLANNONCEE"
 export const UPDATEANNAONCE = "UPDATEANNAONCE" ;
 export const DELATEANNOCE = "DELATEANNOCE"  ;
 export const POSTANNONCE = "POSTANNONCE"   ;
+export const SORTSTATE = "SORTSTATE"
 /*FAVORITE */
 export const GETALLFAVORITE="GETALLFAVORITE"
 
@@ -22,3 +24,4 @@ export const RECUPEREMAL="RECUPEREMAL"
 
 /* recuperer tout les message */
 export const GETTALLMESSAGE = "GETTALLMESSAGE"
+export const DELATEMESSAGE = "DELATEMESSAGE"

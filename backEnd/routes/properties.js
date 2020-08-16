@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const moment = require('moment');
 const multer = require("multer");
 let Property = require("../models/property.model");
 const upload = multer();
@@ -11,6 +12,7 @@ router.route("/allannonce").get((req, res) => {
 });
 
 router.route("/addproperties").post((req, res) => {
+ 
   console.log(req.body)
 
 
@@ -28,7 +30,8 @@ router.route("/addproperties").post((req, res) => {
   const description = req.body.description;
   const image = req.body.image;
   const idcreateur = req.body.idcreateur;
-
+  let datenow = moment().format("DD/MM/YYYY, h:mm:ss a")
+  const datecreation = datenow;
   const newProperty = new Property({
     price,
     espace,
@@ -42,7 +45,8 @@ router.route("/addproperties").post((req, res) => {
     postalCode,
     description,
     image,
-    idcreateur
+    idcreateur,
+    datecreation
   });
 
   newProperty

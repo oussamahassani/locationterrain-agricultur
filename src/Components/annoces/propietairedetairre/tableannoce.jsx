@@ -49,63 +49,62 @@ const TableComponent = (props) => {
   const columns = [
     {
       dataField: "idannonce",
-      text: "idannonce",
+      text: "ID",
       sort: true,
-      filter: textFilter(),
+      filter: textFilter({
+        placeholder: 'N°'}),
       headerStyle: () => {
-        return { width: "10%" };
+        return { width: "7%" };
       },
     },
     {
       dataField: "price",
-      text: "price",
+      text: "Prix en DT",
       sort: true,
-      filter: textFilter(),
+     
+      filter: textFilter({
+        placeholder: 'Prix'}),
       headerStyle: () => {
         return { width: "10%" };
       },
     },
     {
-      dataField: "espace",
-      text: "espace",
+      dataField: "espace" ,
+      text: "Espace en m²",
       sort: true,
-      filter: textFilter(),
+      filter: textFilter({
+        placeholder: 'Espace'}),
+      headerStyle: () => {
+        return { width: "10%" };
+      },
+    },
+    
+    {
+      dataField: "typebien",
+      text: "Type bien",
+      sort: true,
+      filter: textFilter({
+        placeholder: 'Bien'}),
       headerStyle: () => {
         return { width: "10%" };
       },
     },
     {
-      dataField: "longitude",
-      text: "longitude",
+      dataField: "typelocation",
+      text: "Type location",
       sort: true,
-      filter: textFilter(),
-      headerStyle: () => {
-        return { width: "10%" };
-      },
-    },
-    {
-      dataField: "altitude",
-      text: "altitude",
-      sort: true,
-      filter: textFilter(),
-      headerStyle: () => {
-        return { width: "10%" };
-      },
-    },
-    {
-      dataField: "houseNumber",
-      text: "houseNumber",
-      sort: true,
-      filter: textFilter(),
+      filter: textFilter({
+        placeholder: 'Type'}),
       headerStyle: () => {
         return { width: "10%" };
       },
     },
     {
       dataField: "street",
-      text: "street",
+      text: "Rue",
       sort: true,
-      filter: textFilter(),
+      filter: textFilter({
+        placeholder: 'Rue'}),
       headerStyle: () => {
         return { width: "10%"};
       },
@@ -117,14 +116,14 @@ const TableComponent = (props) => {
       dataField: "link",
       text: "Action",
       headerStyle: () => {
-        return { width: "24%", textAlign: "center" };
+        return { width: "15%", textAlign: "center" };
       },
       /*-btn:details-edit----------------------------------------------------------*/
       formatter: (rowContent, row) => {
         return (
           <div className="flex-bettwen">
             <Mid donner= {row} />
-            <Link to={"edit/" + row._id}>
+            <Link to={"UpdateAnnonce/" + row._id}>
               <button  className="btn btn-warning">
               <i class="fa fa-pencil" aria-hidden="true"></i>
               </button>
@@ -159,12 +158,13 @@ const TableComponent = (props) => {
           {(props) => (
 
             <div>
+              <h2>Gestion Annonce</h2>
               <Row>
                 <Col>
                   <Link to="/createListing">
                     <button className="btn btn-success"  labelPosition="left">
                    
-                      Ajouter une annoces
+                      Ajouter une annonces
                     </button>
                   </Link>
                 </Col>
@@ -203,7 +203,7 @@ const TableComponent = (props) => {
           /*-search---------------------- */
           <div className="text-center">
             { (
-              <h4>prosuit existe pas</h4>
+              <h4>produit existe pas</h4>
             )}
           </div>
         )}

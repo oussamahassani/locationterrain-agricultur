@@ -3,6 +3,7 @@ import { NavLink} from 'react-router-dom';
 import Cookies from 'js-cookie'
 import logo from  '../../assest/logo.png'
 import swal from "sweetalert";
+import {logout} from '../../utils'
 class Navbar extends Component {
   verification(){
     swal("Are you sure you want to do this?", {
@@ -11,12 +12,12 @@ class Navbar extends Component {
     })
     .then((willdecooenct) => {
       if (willdecooenct) {
-        Cookies.remove('typeuser')
-        Cookies.remove('jwt')
-        Cookies.remove('_id')
-       if( swal("Poof! Your imaginary file has been deleted!", {
+        logout()
+       if( swal("vous avez deconnectez", {
           icon: "success"}))
+          {
           window.location.href = "http://localhost:3000/";
+          }
       
   }
 })
@@ -25,10 +26,14 @@ class Navbar extends Component {
   }
   render() {
     return (
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+      <>
+         <hr></hr> 
+         <div  className={Cookies.get("jwt")?"bagroundvavbar flex-betwen ":"bagroundvavbar"}>
+      <nav className="navbar navbar-expand-lg  ">
+   
         <img src={logo} width="150px" height="100px" alt="logo" />
-        <a className="navbar-brand" href="#">
-          Mazrettnaa
+        <a className="navbar-brand text-dark" href="#">
+      
         </a>
         <button
           className="navbar-toggler"
@@ -42,16 +47,16 @@ class Navbar extends Component {
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="nav navbar-nav ml-auto">
+          <ul className="nav navbar-nav ml-auto  ">
            <li className="nav-item">
-          { Cookies.get("jwt") ? null :    <NavLink className="nav-link" exact activeClassName="active" to="/">
+          { Cookies.get("jwt") ? null :    <NavLink className="nav-link text-dark" exact activeClassName="active" to="/">
                Acceuil
               </NavLink>
   }
             </li>
   
             <li className="nav-item">
-              <NavLink className="nav-link" exact activeClassName="active" to="/allListings">
+              <NavLink className="nav-link text-dark" exact activeClassName="active" to="/allListings">
                Annonces
               </NavLink>
             </li>
@@ -63,18 +68,30 @@ class Navbar extends Component {
               </Link>
             </li> */}
             <li className="nav-item">
-          {Cookies.get("jwt")? <NavLink className="nav-link" exact activeClassName="active" to="/admin">Home</NavLink>  : <NavLink className="nav-link" exact activeClassName="active" to="/login">
+          {Cookies.get("jwt")? <NavLink className="nav-link text-dark" exact activeClassName="active" to="/admin">Home</NavLink>  : <NavLink className="nav-link text-dark" exact activeClassName="active" to="/login">
                 LogIn
               </NavLink>
   }
  
             </li>
-            {Cookies.get("jwt")? <button className="btn btn-danger"
-                                           onClick={this.verification}
-            >Deconecter</button> : null }
+          
           </ul>
+       
         </div>
+       
       </nav>
+      <div>
+        <br/>  <br/>
+        {Cookies.get("jwt")?  <div>  <img src="index.png" width="100px" className="rounded-circle border" alt="Cinque Terre" /> 
+        {" "}
+      <button className="btn btn-danger"
+                                           onClick={this.verification}
+            >Deconecter</button> </div>: null }
+            </div>
+            </div>
+      <hr></hr>
+ 
+      </>
     );
   }
 }

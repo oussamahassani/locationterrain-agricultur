@@ -36,15 +36,14 @@ export default class MapDisplay extends Component {
           <Marker position={position}>
        
           <Popup>
-      <h2 className="leaflet-popup-title">"teiel"</h2>
+      <h2 className="leaflet-popup-title">{this.props.titre}</h2>
 
-      <img src="iimg" className="leaflet-popup__image" />
+      <img src={'../../image/'+this.props.image} className="leaflet-popup__image" width="70px"  height="70px"/>
 
-      <p>description</p>
+      <p> {this.props.description}</p>
 
-      <a href="" target="_blank">
-        Website
-      </a>
+     
+     <a href="#">Type de location : {this.props.location}</a>
     </Popup>
     </Marker>
         </Map>

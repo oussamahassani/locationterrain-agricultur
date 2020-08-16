@@ -4,7 +4,7 @@ import Cookies from 'js-cookie'
 import {getoneuser} from '../../action/Personne'
 import {recupereremail} from '../../action/Email'
 import Email from '../compossant/sendmail'
-
+import {addtofavoriteannoce} from '../../action/Annonce'
  class propietairedetail extends Component {
     componentDidMount() {
         
@@ -12,6 +12,12 @@ import Email from '../compossant/sendmail'
          this.props.recupereremail(Cookies.get("_id"))
        
        }
+       sendtofavorite = () =>  {
+        if (Cookies.get("typeuser") !== "demandeur")
+        alert("vous navez pas autorizer d'ajouter cette annonce ")
+        else
+   this.props.addtofavoriteannoce(this.props.annonce,this.props.personne)
+      }
     render() {
         return (
             <div>
@@ -31,12 +37,14 @@ import Email from '../compossant/sendmail'
 </button> */}
 <div style={{width : "50%"}}>
 <div className="flex-bettwen">
-{this.props.email? <Email toemail = {personne.email}  user={this.props.email}/> : null}
+{this.props.email.email? <Email toemail = {personne.email}  user={this.props.email.email}/> : null}
 
 
  <a href={"/Addmessagerie/"+personne._id}><button className="btn btn-tchat">TCHAT <i class="fa fa-comments"></i></button> </a>
 </div>
 </div>
+<button  onClick={() => this.sendtofavorite()} className="btn btn-emailning float-right"> Ajouter au liste favorite</button>
+
 </>
 )}
             </div>
@@ -49,7 +57,7 @@ const mapstatetoprops = (state) => ({
     email : state.email
    })
    const mapdispatchtoprops = (disptach) => ({
-   
+    addtofavoriteannoce : (annonce ,user) => disptach(addtofavoriteannoce(annonce,user)),
    getoneuser: (id) =>disptach(getoneuser(id)),
    recupereremail:(id) =>disptach(recupereremail(id))
   

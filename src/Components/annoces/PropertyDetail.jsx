@@ -5,6 +5,7 @@ import {getoneuser} from '../../action/Personne'
 import MapDisplay from '../maps/ViewMap'
 import Cookies from 'js-cookie'
 import Propietairedetail from './propietairedetail'
+import Poppers from '../compossant/poper'
 import "../index.css"
 
 
@@ -21,62 +22,51 @@ class PropertyDetail extends Component {
       this.props.getoneannonce(this.state.id)
    
    }
-   componentWillReceiveProps(nextProps){
-    if(nextProps.userannoce !==this.props.userannoce ){
+   static getDerivedStateFromProps(nextProps, prevState) {
+    if(nextProps.annonce!== prevState.annonce ){
       //Perform some operation
-      this.setState({annonce: nextProps.userannoce });
-
-    
+      return { annonce: nextProps.annonce };
+    }
+    else return null; // Triggers no change in the state
   }
-}
-   
-  
-  
-   sendtofavorite = () =>  {
-     if (Cookies.get("typeuser") !== "demandeur")
-     alert("vous navez pas autorizer d'ajouter cette annonce ")
-     else
-this.props.addtofavoriteannoce(this.state.annonce)
-   }
+
   render() {
     return (
       <div className="container">
         <div className="padding-container">
         <h1 className="textalign">Detail annoce </h1>
-        {this.state.annonce  ? this.state.annonce.map( annonce => <>
-        <p className="textalign"> NUmero annonce : {annonce.idannonce}</p>
+      <div  className ="">
+        <Poppers/>
+        </div>
+        {this.state.annonce ? this.state.annonce.map( annonce => <>
+        <p className="textalign"> Numero annonce : {annonce.idannonce}</p>
     
-        <img src ={'../../image/'+ annonce.image} alt ="..." className="centre-image"></img>
+        <img src ={'../../image/'+ annonce.image} alt ="..." className="centre-image" width="250px" height="250px"></img>
         <div class="row">
-    <div class="col-md-2"> <p className="textalign"> prix : {annonce.price }  DT</p></div>
-    <div class="col-md-3 offset-md-2">espace : {annonce.espace}</div>
-    <div class="col-md-3 offset-md-2"> province: : {annonce.province}</div>
+    <div class="col-md-2"> <p className="textalign">Prix : {annonce.price }  DT</p></div>
+    <div class="col-md-3 offset-md-2">Espace : {annonce.espace} m²</div>
+    <div class="col-md-3 offset-md-2"> Province: : {annonce.province}</div>
   </div>
 
  
         <h5>Emplacement Maps:</h5>
-        <MapDisplay lat={annonce.altitude} lon={annonce.longitude}/>
+        <MapDisplay lat={annonce.altitude} lon={annonce.longitude} titre={annonce.idannonce} description={annonce.description} image={annonce.image} location={annonce.typelocation}/>
    
-   
+ 
 </>
-        )
+        ) : <p>off</p>}
 
-     
-      
-         : "on"}
-      
-  
- {Cookies.get("typeuser")=="demandeur" ?  <> <Propietairedetail iduser={this.state.ids}/>  
+{this.state.annonce ? Cookies.get("typeuser") == "demandeur" ?<Propietairedetail iduser={this.state.ids} annonce ={this.props.annonce}/>  : Cookies.get("typeuser")=="proprietaire"?  <p className="text-center">Vous navez pas l'autorisation de voire le cordonner des autre proprietaire</p>: <p className="text-center">Merci de  conectez pour voir le cordonner de proprietaire compte</p>   : <p className="text-center">Annonce existe pas</p> }
  
 
-<button  onClick={() => this.sendtofavorite()} className="btn btn-emailning float-right"> Ajouter au liste favorite</button> </> : <h5> merci de conetctez pour voire les coordoner de propietaire ou d'ajouter cette annonce au liste favorite</h5>}
       </div>
       </div>
     );
   }
 }
 const mapstatetoprops = (state) => ({
-  userannoce : state.annonce
+  annonce : state.annonce ,
+  personne : state.personne 
  })
  const mapdispatchtoprops = (disptach) => ({
   getoneannonce : (id) => disptach(getoneannonce(id)),

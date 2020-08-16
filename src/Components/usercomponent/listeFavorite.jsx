@@ -1,68 +1,94 @@
 import React, { Component } from 'react'
 import Mapfavoriteannonce from './Favorite'
 import {showallfavoriteannonce} from '../../action/Annonce'
+import {getmessages} from '../../action/messagerie'
 import {Sidebar} from '../../Components'
 import {connect} from 'react-redux'
-import ReactDOM from "react-dom";
-import { Card, Pagination } from "antd";
+
+import  Pagination  from "../compossant/pagination";
+import Cookies from 'js-cookie'
 
 class ListeFavorite extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      minValue: 0,
-      maxValue: 9
-    };
+  state = {
+    totalRecords: "",
+    totalPages: "",
+    pageLimit: "",
+    currentPage: "",
+    startIndex: "",
+    endIndex: "",
+    input:"",
+    favorite : []
+    
+}
+componentDidMount(){
+  this.props.showallfavoriteannonce()
+  this.props.getmessages(Cookies.get("_id"))
+
+}
+static getDerivedStateFromProps(nextProps, prevState) {
+  if(nextProps.favorite!== prevState.favorite ){
+    //Perform some operation
+    return { favorite: nextProps.favorite };
   }
-  handleChange = value => {
-    if (value <= 1) {
-      this.setState({
-        minValue: 0,
-        maxValue: 9
+  else return null; // Triggers no change in the state
+}
+  showannonce = (rowsPerPage) => {
+   let result = null;
+          if (rowsPerPage.length > 0)
+      result = rowsPerPage.filter(el => el.Utilisateur == Cookies.get("_id") ).map((el, i) => {
+        return   <Mapfavoriteannonce favorite={el}  key={i}  />
+       
       });
-    } else {
-      this.setState({
-        minValue: this.state.maxValue,
-        maxValue: value * 9
-      });
-    }
+    
+    return result;
   };
+onChangePage = data => {
+    this.setState({
+      pageLimit: data.pageLimit,
+      totalPages: data.totalPages,
+      currentPage: data.page,
+      startIndex: data.startIndex,
+      endIndex: data.endIndex
+    });
+  };
+  
   render() {
-    let data = [
-      { title: "Card title1", value: "Card content1" },
-      { title: "Card title2", value: "Card content2" },
-      { title: "Card title3", value: "Card content3" },
-      { title: "Card title4", value: "Card content4" },
-      { title: "Card title5", value: "Card content5" },
-      { title: "Card title6", value: "Card content6" },
-      { title: "Card title7", value: "Card content7" },
-      { title: "Card title8", value: "Card content8" },
-      { title: "Card title9", value: "Card content9" },
-      { title: "Card title10", value: "Card content10" },
-      { title: "Card title11", value: "Card content11" },
-      { title: "Card title12", value: "Card content12" },
-      { title: "Card title13", value: "Card content13" },
-      { title: "Card title14", value: "Card content14" },
-      { title: "Card title15", value: "Card content15" }
-    ];
+   
+    let  {
+      totalPages,
+      currentPage,
+      pageLimit,
+      startIndex,
+      endIndex
+  } = this.state;
+
+  let rowsPerPage = [];
+  rowsPerPage = this.state.favorite.slice(startIndex,endIndex + 1);
     return (
-      <div>
-        {data &&
-          data.length > 0 &&
-          data.slice(this.state.minValue, this.state.maxValue).map(val => (
-           <>
-            <Mapfavoriteannonce favorite={val} /> 
-          
-              <p>{val.value}</p>
-              </>
+      <div className="flexflex"> <Sidebar  message = {this.props.message ? this.props.message.filter(el => !el.read  && !el.deleted ).length : null}/>
+      <div className="container">
+        <br/>
+        <h4 className="text-center">Liste favorite</h4>
+        <div className="flexflex">
+
+       {      this.showannonce(rowsPerPage)          }
+       </div>
+          <div className="col-xs-12 dispalyflexbettwen">
+          <Pagination
+            totalRecords={ this.props.favorite.length}
+            pageLimit={pageLimit || 4}
+            initialPage={1}
+            pagesToShow={5}
+            onChangePage={this.onChangePage}
+          />
         
-          ))}
-        <Pagination
-          defaultCurrent={1}
-          defaultPageSize={9}
-          onChange={this.handleChange}
-          total={15}
-        />
+        </div>
+          <div>
+            </div>
+            
+
+        
+          </div>
       </div>
     );
   }
@@ -71,6 +97,12 @@ class ListeFavorite extends Component {
 
 
 /*
+ <Pagination
+          defaultCurrent={1}
+          defaultPageSize={9}
+          onChange={this.handleChange}
+          total={15}
+        />
      componentDidMount(){
         this.props.showallfavoriteannonce()
      }
@@ -90,10 +122,12 @@ class ListeFavorite extends Component {
 }
 */
 const mapstatetoprops = (state) => ({
-    favorite : state.favorite
+    favorite : state.favorite,
+    message : state.message
    })
    const mapdispatchtoprops = (disptach) => ({
-    showallfavoriteannonce : () => disptach(showallfavoriteannonce())
+    showallfavoriteannonce : () => disptach(showallfavoriteannonce()),
+    getmessages :(id) => disptach(getmessages(id))
   
   })
 export default connect (mapstatetoprops,mapdispatchtoprops)(ListeFavorite)

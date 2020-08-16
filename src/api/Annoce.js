@@ -1,5 +1,6 @@
 import Axios from 'axios'
 import {URL} from  './Url'
+import Cookies from 'js-cookie'
 const config = {
 
     headers: {
@@ -20,7 +21,17 @@ export const updateannonce = (annoce ) => Axios.patch(URL +`app/updateeannonces/
 
 )
 /* favorite annnonce api */
-export const sedtofavorite = (annonce) => Axios.post(URL +'app/annocefavorite' , {annonce})
+export const sedtofavorite = (annonce , user) => {
+  console.log(annonce,user)
+  let nom = user[0].Nom 
+  let prenom = user[0].Prenom
+  let numtel = user[0].numtelephone
+  let email = user[0].email 
+  let Utilisateur = Cookies.get("_id")
+   let obj = {...annonce[0]}
+   Object.assign(obj,{"nomuser":nom,"prenomuser":prenom,"emailuser":email,"numtel":numtel,"Utilisateur":Utilisateur})
+ return Axios.post(URL +'app/annocefavorite' , {obj})
+}
 export const showallfavorites = Axios.get(URL + "app/allannoncefavorite")
 export const deletefromfavorite = (id) => Axios.delete(URL + `app/delateannocefavorite/${id}`)
 

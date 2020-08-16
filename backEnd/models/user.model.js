@@ -47,6 +47,9 @@ const userSchema = new Schema(
     },
     datecreation: {
       type: String,
+    },
+    Photo:{
+      type:String
     }
   },
   {timestamps: true} 

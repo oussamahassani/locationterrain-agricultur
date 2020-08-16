@@ -62,11 +62,12 @@ const propertySchema = new Schema(
     image: {  
       type: String,
       required: true
+    },
+    datecreation: {
+      type: String,
     }
   },
-  {
-    timestamps: true
-  }
+ 
 );
 propertySchema.plugin(autoIncrement.plugin, { model: 'Property', field: 'idannonce' , startAt: 1 })
 const Property = mongoose.model("Property", propertySchema);

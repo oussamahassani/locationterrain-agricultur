@@ -26,10 +26,16 @@ export const updateannoces = (annonce) => { return  (dispatch) =>
     .catch(err => console.log(err))
 }
  /* favorite annonce */
-export const addtofavoriteannoce = (annonce) => {
-    return (dispatch) => apiannonce.sedtofavorite(annonce)
-    .then(res =>console.log(res.data) )
+export const addtofavoriteannoce = (annonce,user) => {
+
+    return (dispatch) => {
+  
+    apiannonce.sedtofavorite(annonce,user)
+    .then(res => { console.log(res.data)
+        swal("Info", res.data.msg);
+    } )
     .catch(err => console.log(err) )
+    }
 }
 
 export const showallfavoriteannonce = () => {
@@ -65,6 +71,15 @@ export const delateannoce = payload => ({
     payload
 })
 
+/*sort state */
+export const sortsttatees = (donner) => { return (dispatch) => 
+    dispatch(sortsttate(donner))
+       console.log("action",donner)
+}
+ export const sortsttate = payload => ({
+     type : annonce.SORTSTATE,
+     payload
+ })
 
 export const getoneannonce = (id) => { return (dispatch) => 
     apiannonce.getoneannonce(id)

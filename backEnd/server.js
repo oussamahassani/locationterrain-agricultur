@@ -11,6 +11,7 @@ let annonce = require ("./routes/properties")
 let favorite = require ("./routes/favorite")
 let message = require ("./routes/messages")
 app.use(cookieParser())
+require('events').EventEmitter.defaultMaxListeners = 25
 
 /*app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "http://localhost:3000");
@@ -66,10 +67,7 @@ var storage = multer.diskStorage({
 
 var upload = multer({ storage: storage }).array('file')
 
-app.get('/',function(req,res, next){
-  return res.cookie('salh', 'momahed').send('cookie set')
-next()
-})
+
 
 app.post('/upload',function(req, res , next) {
   
@@ -88,6 +86,9 @@ app.post('/upload',function(req, res , next) {
     })
 
 });
+app.get('/',function(req,res){
+  return res.send('Hello Server')
+})
 app.listen(4000 ,() => {
   console.log("Server running on port 4000");
 });

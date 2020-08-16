@@ -1,9 +1,10 @@
 import * as Personne from '../action/Type'
 import Cookies from 'js-cookie'
 import jwt from 'jsonwebtoken'
-const init = []
+import {login} from '../utils'
+const perso = []
 
-export const Personnes = (state = []  , action) => {
+export const Personnes = (state = perso  , action) => {
     switch(action.type) {
     case (Personne.GETALLPERSONNE):
        return  action.paylod
@@ -15,8 +16,9 @@ export const Personnes = (state = []  , action) => {
         return [action.paylod]
         case(Personne.DECODETOKEN):
         let decode = jwt.decode(action.paylod);
-        Cookies.set("typeuser",decode.typeuser)
-        Cookies.set("_id",decode._id)
+        login(decode)
+      /*  Cookies.set("typeuser",decode.typeuser)
+        Cookies.set("_id",decode._id)*/
     default:
     return state
     }

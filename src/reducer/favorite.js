@@ -1,5 +1,5 @@
 import * as Annoce from '../action/Type'
-const init = ""
+const init = []
 
 export const Favorite = ( state = init , action) => {
 

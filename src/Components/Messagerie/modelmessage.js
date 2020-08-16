@@ -14,20 +14,19 @@ export class ModalMessage extends React.Component {
   render() {
     return (
         <>
-        {console.log(this.props.message)}
-        <Button color="info" onClick={this.toggle}>Open
+        <Button className="bagroundmessagenonlu" onClick={this.toggle}>Ouvrire
         </Button>
-         <Modal     aria-labelledby="example-modal-sizes-title-lg" isOpen={this.state.modal} toggle={this.toggle} size="lg" >
+         <Modal isOpen={this.state.modal} toggle={this.toggle} size="lg" >
          <ModalHeader toggle={this.toggle} close={this.closeBtn}></ModalHeader>
          <ModalBody>
         <div className="modal-dialog modal-lg">
           <div className="modal-content">
-          {this.props.message.send?this.props.message.send.map(el => <>
+       
             <div className="modal-header">
                
               <div>
-                <small className="text-uppercase text-muted">Subject</small>
-                <h4 className="modal-title">{el.subject}</h4>
+                <small className="text-uppercase text-muted">Sujet </small>
+                <h4 className="modal-title">{this.props.message.subject}</h4>
               </div>
             </div>
             <div className="modal-body">
@@ -36,39 +35,41 @@ export class ModalMessage extends React.Component {
                   <small className="text-uppercase text-muted">From</small>
                   <h4>
                     <a href="'mailto:'+selected.fromAddress">
-                      {el.from}
+                      {this.props.message.from}
                     </a>
                   </h4>
                 </div>
                 <div className="col-sm-4">
                   <small className="text-uppercase text-muted">Sent</small>
-                  <h6>{el.dtSent}</h6>
+                  <h6>{this.props.message.dtSent}</h6>
                 </div>
                 <div className="col-sm-12">
                   <p
                     dangerouslySetInnerHTML={{
-                      __html:el.body
+                      __html:this.props.message.body
                     }}
                   />
                 </div>
                 
-                <div className="col-sm-12">
-                    <p>{el.repalymessagemessage}</p>
+                
               </div>
-              </div>
-              </div>
+              {this.props.message.repalymessage.map(el => <>
+              <span>{el.fromreplay}</span> <span>{el.repalymessage}</span> <br></br>
               </>
-                ) : null}
+              )}
+              </div>
+         
+               
               <p className="my-3" />
              
               <button
-                className="btn btn-outline-primary float-right"
+                className="btn-2 float-right"
                 data-dismiss="modal"
                 data-toggle="modal"
                 data-target="#composeModal"
                 onClick={this.toggle}
               >
-                Reply
+                Rependre
               </button>
             </div>
         

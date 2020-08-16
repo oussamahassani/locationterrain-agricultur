@@ -1,18 +1,74 @@
 import React from "react";
 import jquery from "jquery";
-
+import {connect} from 'react-redux'
+import {updatemessagesconversation} from '../../action/messagerie'
+import {sendemessages} from '../../action/messagerie'
+import {recupereremail} from '../../action/Email'
+import Cookies from 'js-cookie'
+import { TumblrShareButton } from "react-share";
 export class ModalCompose extends React.Component {
   constructor(props) {
     super(props);
     this.show = this.show.bind(this);
-    this.state = {};
+    this.state = {
+      emaill:"",
+      subjectt:"",
+      messagee:""
+    };
   }
-
+componentDidMount(){
+ 
+  this.props.recupereremail(Cookies.get('_id'))
+}
   show(idx) {
     /* open message in modal */
     jquery(this.refs.composeModal).modal("show");
   }
-
+  senddraftmessage = () => {
+    const messages = {
+      draft : true,
+      new  : true,
+      deleted : false,
+      read : false,
+      to:  this.state.emaill,
+      from : this.props.email.Nom , 
+      fromAddress  : this.props.email.email,
+      subject:this.state.subjectt,
+      body:this.state.messagee,
+      fromreplay :"",
+      repalymessage : []
+      }
+      this.props.sendemessages(messages)
+     
+     }
+  
+  sendmessage = (event) => {
+ 
+    event.preventDefault()
+let donner = {fromreplay : this.props.initmessage[0].Nom  + " "+ this.props.initmessage[0].Prenom,
+   repalymessage : this.state.messagee
+} 
+    if ( this.props.subject)
+    this.props.updatemessagesconversation(this.props.idcobversation,donner)
+     else 
+     {
+     const messages = {
+      draft : false,
+      deleted : false,
+      new : true,
+      read : false,
+      to:  this.state.emaill,
+      from : this.props.email.Nom , 
+      fromAddress  : this.props.email.email,
+      subject:this.state.subjectt,
+      body:this.state.messagee,
+      fromreplay :"",
+      repalymessage : []
+      }
+      this.props.sendemessages(messages)
+     
+     }
+  }
   render() {
     return (
       <div
@@ -39,19 +95,21 @@ export class ModalCompose extends React.Component {
               </button>
             </div>
             <div className="modal-body">
-              <form className="form" role="form" autoComplete="off">
+              <div>
                 <div className="form-row py-2">
                   <label htmlFor="sendTo" className="col-sm-2 mb-0">
                     To
                   </label>
                   <div className="col">
                     <input
-                      type="text"
+                     
                       name="sendTo"
                       id="sendTo"
                       className="form-control"
                       required=""
                       value={this.props.sendTo}
+                      onChange = {(e) => this.setState({emaill : e.target.value})}
+                      disabled = {this.props.sendTo ? true : false}
                     />
                   </div>
                 </div>
@@ -64,8 +122,11 @@ export class ModalCompose extends React.Component {
                       type="text"
                       name="subject"
                       id="subject"
+                      value={this.props.subject}
                       className="form-control"
                       required=""
+                      disabled = {this.props.subject ? true : false}
+                      onChange = {(e) => this.setState({subjectt : e.target.value})}
                     />
                   </div>
                 </div>
@@ -80,11 +141,13 @@ export class ModalCompose extends React.Component {
                       id="message2"
                       className="form-control"
                       required=""
+                      onChange = {(e) => this.setState({messagee : e.target.value})}
                     />
                   </div>
                 </div>
                 <div className="form-row py-2">
                   <div className="col-sm-auto py-1">
+                  { /* 
                     <button
                       type="submit"
                       className="btn btn-outline-secondary btn-block"
@@ -92,23 +155,24 @@ export class ModalCompose extends React.Component {
                       Attachments
                       <i className="align-middle icon-paper-clip fa fa-paperclip ml-1" />
                     </button>
+                  */}
                   </div>
                   <div className="col py-1">
                     <button
-                      type="submit"
+                    
                       className="btn btn-secondary float-right ml-1"
-                    >
+                      onClick = {this.sendmessage} >
                       Send Message
                     </button>
-                    <button
-                      type="submit"
+                    {!this.props.subject ?  <button
                       className="btn btn-outline-secondary float-right"
+                      onClick = {this.senddraftmessage} 
                     >
                       Save Draft
-                    </button>
+                    </button> : null}
                   </div>
                 </div>
-              </form>
+              </div>
             </div>
           </div>
         </div>
@@ -116,8 +180,17 @@ export class ModalCompose extends React.Component {
     );
   }
 }
+const mapstatetoprops = (state) => ({
+  email : state.email
+ })
+const mapdispatchtoprops = (disptach) => ({
+  updatemessagesconversation : (id,donner) => disptach(updatemessagesconversation(id,donner)),
+  sendemessages : (message) => disptach(sendemessages(message)),
+  recupereremail:(id) => disptach(recupereremail(id))
 
-export default ModalCompose;
+ 
+ })
+export default  connect (mapstatetoprops,mapdispatchtoprops)(ModalCompose)
 
 {/*
 {

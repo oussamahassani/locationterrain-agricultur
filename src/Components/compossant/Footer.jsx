@@ -1,11 +1,13 @@
 import React from 'react'
-
+import { NavLink} from 'react-router-dom';
 export default function Footer() {
     return (
-        <div className=" navbar-dark bg-dark fixedfooter">
+      <>
+     <hr></hr>
+        <div className=" navbar-dark  fixedfooter bagroundvavbar">
             <footer className="navbar navbar-expand-lg">
-             
-        <a className="navbar-brand" href="#">
+           
+        <a className="navbar-brand text-dark" href="#">
          Mazrettnaa
         </a>
         <button
@@ -22,15 +24,16 @@ export default function Footer() {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="nav navbar-nav ml-auto">
             <li className="nav-item active">
-              <a className="nav-link" href="/ContactUs">
-               Contact as
-              </a>
+            <NavLink className="nav-link text-dark" exact activeClassName="active" to="/ContactUs">
+            Contact as
+              </NavLink>
+             
             </li>
           
             <li className="nav-item">
-              <a className="nav-link" href="/about">
+              <NavLink className="nav-link text-dark" to="/about">
                 AboutUs
-              </a>
+              </NavLink>
             </li>
             {/* <li className="nav-item">
               <Link className="nav-link" to="/contact">
@@ -41,9 +44,11 @@ export default function Footer() {
           </ul>
         </div>
      
-    
+      
       </footer> 
-      <p className="nav-link textalign text-light">Projet chef d'oeuvre  simplon 2020</p>
+      <p className="nav-link textalign text-dark">Projet chef d'oeuvre  simplon 2020</p>
         </div>
+        <hr></hr>
+        </>
     )
 }

@@ -22,6 +22,9 @@ export {default as Footer} from './compossant/Footer'
 export {default as Home} from './compossant/Home'
 export {default as Sidebar } from './compossant/Slidebar'
 export {default as Helper} from './compossant/helper'
+export {default as  LineGraph} from './compossant/statestiqueannonce'
+export {default as PersoLineGraph} from './compossant/statiqueuser'
+export { default as Notfound} from './compossant/Notfound'
 
 
 /* singin*/ 

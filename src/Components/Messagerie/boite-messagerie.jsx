@@ -64,11 +64,11 @@ import Inbox from "./inbox";
 
 
 
-export default function BoiteMessagerie() {
+export default function BoiteMessagerie(props) {
   return (
     <div>
       <div className="container">
-        <Inbox />
+        <Inbox id ={props.match.params.id} />
       </div>
     </div>
   );

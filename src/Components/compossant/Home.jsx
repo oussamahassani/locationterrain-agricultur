@@ -12,7 +12,7 @@ class Home extends Component {
   </ol>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img class="d-block w-100"   style = {{ filter: 'invert(40%)'}} src="image/hero1.jpg" alt="First slide"/>
+      <img class="d-block w-100"   style = {{ filter: 'invert(30%)'}} src="image/hero1.jpg" alt="First slide"/>
       <div class="carousel-caption d-none d-md-block">
       <div className="container">
           <div className="row align-items-center justify-content-center">
@@ -29,7 +29,7 @@ class Home extends Component {
   </div>
     </div>
     <div class="carousel-item">
-      <img class="d-block w-100 site-blocks-cover overla"  style = {{ filter: 'invert(40%)'}}  src="image/hero2.jpeg" alt="Second slide"/>
+      <img class="d-block w-100 site-blocks-cover overla"  style = {{ filter: 'invert(30%)'}}  src="image/hero2.jpeg" alt="Second slide"/>
       <div class="carousel-caption d-none d-md-block">
       <div className="container">
           <div className="row align-items-center justify-content-center">
@@ -46,7 +46,7 @@ class Home extends Component {
   </div>
     </div>
     <div class="carousel-item">
-      <img class="d-block w-100" style = {{ filter: 'invert(40%)'}}  src="image/hero3.jpg" alt="Third slide"/>
+      <img class="d-block w-100" style = {{ filter: 'invert(30%)'}}  src="image/hero3.jpg" alt="Third slide"/>
       <div class="carousel-caption d-none d-md-block">
       <div className="container">
           <div className="row align-items-center justify-content-center">
