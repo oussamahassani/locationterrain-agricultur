@@ -3,7 +3,7 @@ const moment = require('moment');
 const multer = require("multer");
 let Property = require("../models/property.model");
 const upload = multer();
-
+const axios = require('axios')
 router.route("/allannonce").get((req, res) => {
   res.header('Access-Control-Allow-Origin', req.headers.origin);
   Property.find()
@@ -15,8 +15,7 @@ router.route("/addproperties").post((req, res) => {
  
   console.log(req.body)
 
-
-
+  
   const price = Number(req.body.price);
   const espace = Number(req.body.espace);
   const longitude = Number(req.body.longitude);
@@ -32,6 +31,10 @@ router.route("/addproperties").post((req, res) => {
   const idcreateur = req.body.idcreateur;
   let datenow = moment().format("DD/MM/YYYY, h:mm:ss a")
   const datecreation = datenow;
+  axios.get("http://api.positionstack.com/v1/forward?access_key=ba8077d4165a40b776fd39ad27d52955&query=" +street  + "&country=TN&region="+province )
+  .then(res => console.log(JSON.stringify(res.data)))
+  .catch(err => console.log(JSON.stringify(err)))
+
   const newProperty = new Property({
     price,
     espace,

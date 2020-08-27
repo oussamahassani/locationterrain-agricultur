@@ -1,0 +1,186 @@
+.haderblog{
+  background-image: linear-gradient(-225deg,#808080,#3cb371 100%);
+background-repeat: no-repeat;
+background-attachment: fixed;
+}
+.haderblog h2 {margin:2em; letter-spacing:0.2em; color: #EEE}
+.haderblog .container{
+margin: 4em auto;
+width: 90%;
+text-align: center;
+/* 	font-family: 'Aref Ruqaa', serif; */
+font-family: 'Ubuntu', sans-serif;
+
+
+
+}
+.haderblog .item {
+/* 	background: #FFF; */
+margin: 2em;
+display: inline-block;
+width: 200px;
+height: 200px;
+border-radius: 20px;
+transform: rotate(45deg);
+position: relative;
+overflow: hidden;
+transition: all 0.3s ease-in-out;
+padding:0;
+box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+margin: 0 auto;
+}
+.haderblog .item p {
+position: absolute;
+transform: rotate(-45deg);
+top: 30%;
+left: -20%;
+background: rgba(0, 0, 0, 0.7);
+padding: 10px 20px;
+width:130%;
+text-align:center;
+color: #fff;
+transition: all 0.3s ease-in-out;
+
+}
+
+.haderblog .item:hover {
+transform: none;
+transform: scale(1.5);
+z-index:2;
+box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+.haderblog .item:hover > p {
+transform: none;
+top: 0;
+
+}
+
+
+.haderblog img {
+width: 100%;
+height: 100%;
+transition: 0.3s linear;
+transform: rotate(-45deg) scale(1.4) 
+
+
+}
+.haderblog .item:hover > img {
+transform: none;
+
+}
+
+.haderblog p.ar {
+font-family: 'Rakkas', cursive;
+font-size:1.1em;
+
+}
+.haderblog::-webkit-scrollbar
+{
+width: 0.7em;
+background-color: #EEE;
+}
+
+
+
+.footerblog  .social {
+  position: relative;
+  height: 3em;
+  width: 13.5em;
+  margin: 150px 450px;
+}
+.heigthcard {
+  height: 550px;
+}
+.heigthcarddetail{
+  height: 450px;
+}
+
+.footerblog  .social li {
+  display: block;
+  height: 4em;
+  line-height: 4em;
+  margin: -2.2em;
+  position: absolute;
+  -webkit-transition: -webkit-transform .7s;
+  -moz-transition: -moz-transform .7s;
+  -ms-transition: -ms-transform .7s;
+  -o-transition: -o-transform .7s;
+  transition: transform .7s;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+  text-align: center;
+  width: 4em;
+
+}
+
+.footerblog  .social a {
+  color: #fffdf0;
+  display: block;
+  height: 4em;
+  line-height: 6em;
+  text-align: center;
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  width: 4em; 
+
+}
+
+.footerblog  .social li:hover {
+-webkit-transform: scale(1.3,1.3) rotate(45deg);
+  -moz-transform: scale(1.3,1.3) rotate(45deg);
+-ms-transform: scale(1.3,1.3) rotate(45deg);
+  -o-transform: scale(1.3,1.3) rotate(45deg);
+transform: scale(1.3,1.3) rotate(45deg);
+}
+
+.footerblog  .facebook {
+  background: #155b9d;
+  left: 0;
+  top: 0%;
+}
+
+.footerblog  .twitter {
+  background: #1a9ec4;
+  bottom: 0;
+  left: 25%;
+}
+.footerblog  .facebook2 {
+  background: #155b9d;
+  left: 50%;
+  top: 0%;
+}
+
+.footerblog  .twitter2 {
+  background: #1a9ec4;
+  bottom: 0;
+  left: 25%;
+}
+
+.footerblog  .pinterest {
+  background: #e11a30;
+  left: 50%;
+  top: 0%;
+}
+.footerblog  .behance {
+  background: #3f7aa3;
+  bottom: 0;
+  left: 75%;
+}
+.footerblog  .behance2 {
+  background: #3f7aa3;
+  top: 0%;
+  left: 50%;
+}
+.footerblog  .behance3 {
+  background: #3f7aa3;
+  bottom: 0;
+  left: 75%;
+}
+

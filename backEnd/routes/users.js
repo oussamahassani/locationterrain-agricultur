@@ -111,7 +111,7 @@ router.post('/loginuser',async (req, res, next) => {
     if (compare)
     {
     const token  = jwt.sign({_id : user._id , typeuser: user.typeuser },"Bearer");
-  
+ 
    res.cookie('jwt',token).send("ok")
     }
     else

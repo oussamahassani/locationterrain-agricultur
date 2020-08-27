@@ -7,7 +7,7 @@ export const DELATEANNOCE = "DELATEANNOCE"  ;
 export const POSTANNONCE = "POSTANNONCE"   ;
 export const SORTSTATE = "SORTSTATE"
 /*FAVORITE */
-export const GETALLFAVORITE="GETALLFAVORITE"
+export const GETALLFAVORITE="GETALLFAVORITE" ;
 
 
 /*personne */
@@ -16,12 +16,16 @@ export const GETONEUSER = "GETONEUSER"            ;
 export const  DELATEPERSONNE="DELATEPERSONNE"    ;
 export const  LOGINPERSONNE ="LOGINPERSONNE"     ;
 export const SIGNUPPERSONNE = "SIGNUPPERSONNE"    ;
-export const DECODETOKEN = "DECODETOKEN"
+export const DECODETOKEN = "DECODETOKEN" ;
 
 /* RECUPERER MAIL */
-export const RECUPEREMAL="RECUPEREMAL"
+export const RECUPEREMAL="RECUPEREMAL";
 
 
 /* recuperer tout les message */
-export const GETTALLMESSAGE = "GETTALLMESSAGE"
-export const DELATEMESSAGE = "DELATEMESSAGE"
+export const GETTALLMESSAGE = "GETTALLMESSAGE";
+export const DELATEMESSAGE = "DELATEMESSAGE";
+
+/*Produit */
+export const  GETALLProduit="GETALLProduit";
+export const DELATEProduit= "DELATEProduit";

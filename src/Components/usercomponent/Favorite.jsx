@@ -1,34 +1,35 @@
 import React ,  {Component} from 'react'
-
-import { Card, Button, CardHeader, CardFooter, CardBody,
+import {connect} from 'react-redux'
+import { Card ,CardHeader, CardFooter, CardBody,
   CardTitle, CardText } from 'reactstrap';
-import { render } from 'react-dom';
+  import {deletefromfavorite} from '../../action/Annonce'
 
 
-
-export default class Mapfavoriteannonce extends Component {
+ class Mapfavoriteannonce extends Component {
   constructor(props) {
     super(props)
-    this.myRef1 = React.createRef();
+    this.annonce = React.createRef();
   }
 
 
     hidemovie  = (e) => {
-     
-        
+     const id = this.annonce.current.id;
+      this.props.deletefromfavorite(id)
         let a =  e.target;
            a.style.display="none"
-		  this.myRef1.current.style="display : none"
+    this.annonce.current.style="display : none"
+ 
            e.preventDefault()
         
     }
    
     render(){
     return (
-      <Card ref={this.myRef1}  className ="cardliste">
+      <div ref={this.annonce} id={this.props.favorite._id} className ="cardliste">
+      <Card  >
       <CardHeader>Header</CardHeader>
       <CardBody>
-      <p onClick={this.hidemovie} style={{float:"right"}} >❌</p>
+      <button onClick={this.hidemovie} style={{float:"right"}} >❌</button>
         <CardTitle><h3 className="text-centre clor">Num annonce:{this.props.favorite.idannonce
 } </h3></CardTitle>
         <div className="cardfavorite" >
@@ -53,7 +54,17 @@ export default class Mapfavoriteannonce extends Component {
       </CardBody>
       <CardFooter>Footer</CardFooter>
     </Card>
+    </div>
    
     )
 }
 }
+const mapstatetoprops = (state) => ({
+
+ })
+ const mapdispatchtoprops = (disptach) => ({
+  deletefromfavorite : (id) => disptach(deletefromfavorite(id)),
+
+
+})
+export default connect (mapstatetoprops,mapdispatchtoprops)(Mapfavoriteannonce)

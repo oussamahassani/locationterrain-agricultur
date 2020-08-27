@@ -46,7 +46,7 @@ export const showallfavoriteannonce = () => {
 }
 export const deletefromfavorite = (id) => {
     return (dispatch) => apiannonce.deletefromfavorite(id)
-    .then(res => console.log(res.data))
+    .then(res => console.log(res.data),window.location.reload(false))
     .catch(err => console.log(err))
 }
 export const getallfavorite = payload => ({

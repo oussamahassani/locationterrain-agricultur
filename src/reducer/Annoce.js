@@ -3,7 +3,6 @@ const Ann = []
 
 
 export const Annonce = (state = Ann, action) => {
-   console.log("ok",action.payload) 
     switch (action.type) {
         case (Annoce.GETALLANNONCE):
             return action.payload

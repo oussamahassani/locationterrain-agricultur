@@ -19,8 +19,8 @@ let   anees = []
         }
         chartRef = React.createRef();
         componentDidMount() {
-          const myChartRef = this.chartRef.current.getContext("2d");
-          axios
+         const myChartRef = this.chartRef.current.getContext("2d");
+         axios
       
             .get(URL + "app/getalluser"
             )

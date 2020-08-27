@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
-import {sendemessages} from '../../action/messagerie'
+import {sendSms} from '../../action/messagerie'
 import {recupereremail} from '../../action/Email'
 import Cookies from 'js-cookie' 
  class Addmessagerie extends Component {
@@ -33,7 +33,7 @@ componentDidMount()
         fromreplay :"",
         repalymessage : []
         }
-  this.props.sendemessages(messages)
+  this.props.sendSms(messages)
   this.setState({titre:''})
   this.setState({message:''})
     }
@@ -71,7 +71,7 @@ const mapstatetoprops = (state) => ({
     email : state.email
    })
    const mapdispatchtoprops = (disptach) => ({
-    sendemessages : (message) => disptach(sendemessages(message)),
+    sendSms : (message) => disptach(sendSms(message)),
     recupereremail : (id) => disptach(recupereremail(id))
     
    

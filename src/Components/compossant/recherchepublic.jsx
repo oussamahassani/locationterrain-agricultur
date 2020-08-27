@@ -19,13 +19,13 @@ export default class Recherche extends Component {
     <div id="carouselExampleFade" className="carousel slide carousel-fade" data-ride="carousel">
         <div className="carousel-inner">
             <div className="carousel-item active">
-                <img src="image/ag1.jpg" height="350px" className="d-block w-100" alt="..."/>
+                <img src="image/ag11.jpg" height="350px" className="d-block w-100" alt="..."/>
             </div>
             <div className="carousel-item">
-                <img src="image/ag2.jpg" height="350px"  className="d-block w-100" alt="..."/>
+                <img src="image/ag22.jpg" height="350px"  className="d-block w-100" alt="..."/>
             </div>
             <div className="carousel-item">
-                <img src="image/ag3.jpg"  height="350px" className="d-block w-100" alt="..."/>
+                <img src="image/ag33.jpg"  height="350px" className="d-block w-100" alt="..."/>
             </div>
           
         </div>

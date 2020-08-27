@@ -2,6 +2,9 @@ import React from 'react'
 import {MapDisplay} from '../../Components'
 import {sendemaill} from '../../action/Email'
 import {connect} from 'react-redux'
+import ReCAPTCHA from "react-google-recaptcha";
+import swal from 'sweetalert';
+const grecaptchaObject = window.grecaptcha 
 function ContactUs(props) {
   const obj = {
  name : null,
@@ -9,14 +12,23 @@ function ContactUs(props) {
  email : null,
  subject : null,
  message:null,
+ notrobot : null
    }
    const submitHandler = event => {
     event.preventDefault();
     event.stopPropagation();
+    if (obj.notrobot)
+    {
     event.target.className += " was-validated";
     if (obj.email && obj.name && obj.subject)
     sendformcontact()
-  };
+  }
+  else
+  swal("vous devez verifier statut")
+}
+const  onchangenotrobot = (value) =>  {
+   obj.notrobot = value
+  }
   
     const sendformcontact = () => {
    props.sendemaill(obj)
@@ -25,7 +37,7 @@ function ContactUs(props) {
     return (
         <div>
             <section className="counts section-bg" id="contact">
-    <h1 style={{textAlign:"center",fontWeight:"bold",color:"#347FBF",marginBottom:"20px"}}>Contactez-nous</h1>
+    <h3 className="titrepargrape">Contactez-nous</h3>
     <div className="container" style={{backgroundColor:"#FFFFFF" ,padding:"50px"}}>
 
         
@@ -48,7 +60,7 @@ function ContactUs(props) {
             <div className="count-box">
 
               <p  style={{fontWeight:"bold",fontSize:"16px"}}>Service CLient</p>
-                  <p style={{fontSize:"20px"}}>(+33) 4 28 38 41 77</p>
+                  <p style={{fontSize:"20px"}}>(+216) 28 00 41 00</p>
 
             </div>
           
@@ -59,7 +71,7 @@ function ContactUs(props) {
             <div className="count-box">
 
               <p style={{fontSize:"20px"}}>Adresse</p>
-                <p style={{fontSize:"20px"}}>rue chath bath tunise 7071</p>
+                <p style={{fontSize:"20px"}}>Rue chath bath tunise 7071</p>
 
               </div>
           
@@ -69,7 +81,7 @@ function ContactUs(props) {
 
           <div className="count-box">
           <p style={{fontSize:"20px"}}>Notre courrier électronique</p>
-          <p style={{fontSize:"20px"}}>contact@mazertetna.com</p>
+          <p style={{fontSize:"20px"}}>Contact@mazertetna.com</p>
 
           </div>
           
@@ -114,7 +126,12 @@ function ContactUs(props) {
               
               <div className="row">
 
-                <div className="col-md-6"><div className="text-center">(Recaptcha)</div></div>
+                <div className="col-md-6"><div className="text-center">
+                <ReCAPTCHA
+    sitekey="6Ld9gsMZAAAAAF5Z4ubfOxlVaBby2Z4qbwK5Oil-"
+    onChange={onchangenotrobot}
+    grecaptcha={grecaptchaObject}
+  /></div></div>
 
                 <div className="col-md-6">
                   
@@ -129,7 +146,7 @@ function ContactUs(props) {
           </div>
           <div className="col-md-6 aos-init aos-animate" data-aos="fade-up" data-aos-delay="300">
 
-              <div style={{width:"100%",border:"0px" ,solid :"3000000",height:"400" }}>
+              <div style={{width:"100%",border:"0px" ,solid :"3000",height:"400" }}>
 
               <MapDisplay lat ="10.6369900" lon="35.8253900" />
               </div>

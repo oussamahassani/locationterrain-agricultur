@@ -21,8 +21,11 @@ class ListeFavorite extends Component {
     
 }
 componentDidMount(){
-  this.props.showallfavoriteannonce()
+
+ this.props.showallfavoriteannonce()
   this.props.getmessages(Cookies.get("_id"))
+
+
 
 }
 static getDerivedStateFromProps(nextProps, prevState) {
@@ -65,7 +68,7 @@ onChangePage = data => {
   let rowsPerPage = [];
   rowsPerPage = this.state.favorite.slice(startIndex,endIndex + 1);
     return (
-      <div className="flexflex"> <Sidebar  message = {this.props.message ? this.props.message.filter(el => !el.read  && !el.deleted ).length : null}/>
+      <div className="flexflex"> <Sidebar message = {this.props.message ? this.props.message.filter(el => !el.read  && !el.deleted ).length : null}/> 
       <div className="container">
         <br/>
         <h4 className="text-center">Liste favorite</h4>

@@ -14,7 +14,7 @@ Leaflet.Icon.Default.mergeOptions({
 });
 
 const initialState = {
-  zoom: 10,
+  zoom: 15,
   updated: false
 };
 

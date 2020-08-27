@@ -1,5 +1,10 @@
 import React, { Component } from "react";
-
+import ContactUs from './ContactUs'
+import AboutMe from './AboutMe'
+import NosProduit from '../market-place/nosProduit'
+import OwlCarousel from 'react-owl-carousel';
+import 'owl.carousel/dist/assets/owl.carousel.css';
+import 'owl.carousel/dist/assets/owl.theme.default.css';
 class Home extends Component {
   render() {
     return (
@@ -12,7 +17,7 @@ class Home extends Component {
   </ol>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img class="d-block w-100"   style = {{ filter: 'invert(30%)'}} src="image/hero1.jpg" alt="First slide"/>
+      <img class="d-block w-100"   style = {{ filter: 'invert(30%)'}} src="image/hero11.jpg" alt="First slide" height="400px"/>
       <div class="carousel-caption d-none d-md-block">
       <div className="container">
           <div className="row align-items-center justify-content-center">
@@ -29,7 +34,7 @@ class Home extends Component {
   </div>
     </div>
     <div class="carousel-item">
-      <img class="d-block w-100 site-blocks-cover overla"  style = {{ filter: 'invert(30%)'}}  src="image/hero2.jpeg" alt="Second slide"/>
+      <img class="d-block w-100 "  style = {{ filter: 'invert(30%)'}}  src="image/hero22.jpg" alt="Second slide" height="400px"/>
       <div class="carousel-caption d-none d-md-block">
       <div className="container">
           <div className="row align-items-center justify-content-center">
@@ -46,7 +51,7 @@ class Home extends Component {
   </div>
     </div>
     <div class="carousel-item">
-      <img class="d-block w-100" style = {{ filter: 'invert(30%)'}}  src="image/hero3.jpg" alt="Third slide"/>
+      <img class="d-block w-100" style = {{ filter: 'invert(30%)'}}  src="image/hero33.jpg" alt="Third slide" height="400px"/>
       <div class="carousel-caption d-none d-md-block">
       <div className="container">
           <div className="row align-items-center justify-content-center">
@@ -71,6 +76,32 @@ class Home extends Component {
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="sr-only">Next</span>
   </a>
+</div>
+<div class="container">
+<br></br>
+<AboutMe/>
+<br></br>
+<h3 className="titrepargrape">Nous fait confience</h3>
+<OwlCarousel
+    className="owl-theme"
+    loop={true}
+    autoplay={true}
+    margin={10}
+    nav
+>
+    <div class="item"><img class="d-block w-100"  src="image/fournisseur1.png" alt="Third slide" height="100px"/></div>
+    <div class="item"><img class="d-block w-100"  src="image/fournisseur2.png" alt="Third slide" height="100px"/></div>
+    <div class="item"><img class="d-block w-100"   src="image/fournisseur3.png" alt="Third slide" height="100px"/></div>
+    <div class="item"><img class="d-block w-100"  src="image/fournisseur4.png" alt="Third slide" height="100px"/></div>
+    <div class="item"><img class="d-block w-100"   src="image/fournisseur5.png" alt="Third slide" height="100px"/></div>
+    <div class="item"><img class="d-block w-100"   src="image/fournisseur6.png" alt="Third slide" height="100px"/></div>
+    <div class="item"><img class="d-block w-100"   src="image/fournisseur7.png" alt="Third slide" height="100px"/></div>
+    
+</OwlCarousel>
+<br></br>
+<NosProduit/>
+<br></br>
+<ContactUs/>
 </div>
 </div>
    )

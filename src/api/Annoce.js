@@ -1,12 +1,15 @@
 import Axios from 'axios'
 import {URL} from  './Url'
 import Cookies from 'js-cookie'
-const config = {
+const token = Cookies.get('jwt')
 
-    headers: {
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': '*'
-   }
+const config = {
+  headers:{
+    'Authorization': `${token}`,
+   
+  }
+
+ 
  };
 export  const getallannoce = Axios.get(URL+"app/allannonce")
 /*export const postannonce = (annonce) =>  Axios.post(URL+"user/postannoce", {
@@ -19,7 +22,7 @@ Axios.delete(URL+`app/delateannonces/${id}`)
 export const updateannonce = (annoce ) => Axios.patch(URL +`app/updateeannonces/${annoce[0]._id}`, annoce[0]
 
 
-)
+,config)
 /* favorite annnonce api */
 export const sedtofavorite = (annonce , user) => {
   console.log(annonce,user)
@@ -30,10 +33,10 @@ export const sedtofavorite = (annonce , user) => {
   let Utilisateur = Cookies.get("_id")
    let obj = {...annonce[0]}
    Object.assign(obj,{"nomuser":nom,"prenomuser":prenom,"emailuser":email,"numtel":numtel,"Utilisateur":Utilisateur})
- return Axios.post(URL +'app/annocefavorite' , {obj})
+ return Axios.post(URL +'app/annocefavorite' , {obj},config)
 }
-export const showallfavorites = Axios.get(URL + "app/allannoncefavorite")
-export const deletefromfavorite = (id) => Axios.delete(URL + `app/delateannocefavorite/${id}`)
+export const showallfavorites = Axios.get(URL + `app/allannoncefavorite`)
+export const deletefromfavorite = (id) => Axios.delete(URL + `app/delateannocefavorite/${id}`,config)
 
 
-export const getoneannonce = (id) => Axios.get(URL + `app/properties/${id}`)
+export const getoneannonce = (id) => Axios.get(URL + `app/properties/${id}`,config)

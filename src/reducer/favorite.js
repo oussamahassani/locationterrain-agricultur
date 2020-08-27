@@ -8,7 +8,7 @@ export const Favorite = ( state = init , action) => {
         return action.payload
     
     default:
-    return []
+    return state
 
     }
 }

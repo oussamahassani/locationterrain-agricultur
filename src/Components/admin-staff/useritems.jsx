@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { deleteUser } from '../../action/Personne'
 import { NavLink } from 'react-router-dom';
-import Modals from '../compossant/modal'
+import Modals from './modaluser'
 class Useritem extends Component {
   state = {
     changetype: true,

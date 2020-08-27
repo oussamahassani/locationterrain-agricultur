@@ -76,7 +76,7 @@ class Sidebar  extends Component {
                 <small>OPTIONS</small>
             </li>
         
-            <a href="#" className="bg-dark list-group-item list-group-item-action">
+            <a href="/calender" className="bg-dark list-group-item list-group-item-action">
                 <div className="d-flex w-100 justify-content-start align-items-center">
                     <span className="fa fa-calendar fa-fw mr-3"></span>
                     <span className="menu-collapsed">Calendar</span>

@@ -11,7 +11,7 @@ import Cookies from 'js-cookie'
 import {
     delateannocee,updateannoces
 } from "../../../action/Annonce";
-import Mid from  '../../compossant/modal'
+import Mid from  './modalannonceuser'
 import filterFactory, { textFilter } from 'react-bootstrap-table2-filter';
 
 const { ExportCSVButton } = CSVExport;

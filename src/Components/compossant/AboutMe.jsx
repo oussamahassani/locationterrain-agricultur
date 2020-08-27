@@ -4,60 +4,27 @@ class AboutMe extends Component {
   render() {
     return (
       <div>
-        <h1>About Us</h1>
+        <h3 className="titrepargrape">À propos de nous</h3>
         <p>
-          Hoping to sell or buy a property in Montreal or its surrounding areas?
-          Then you’ll be needing a reliable, growing real estate agency to
-          ensure that you procure the perfect property. Look no further than
-          BLVD Realty Group. Specializing in residential, commercial, revenue
-          properties, and relocations, we are young but growing rapidly thanks
-          to an increasing number of satisfied clients. We take pride in helping
-          families close on their dream homes, securing wise assets for
-          insightful investors, and helping flourishing businesses move to
-          commercially advantageous locations.
+        Vous désirez faire ton propre jardain , a tunis ou a  ses environs? Vous aurez alors besoin d’une agence  fiable et en pleine croissance pour vous assurer de vous procurer la propriété parfaite. Ne cherchez pas plus loin que Mazertnaa Group. Spécialisés dans les  vente et la location des terres et matrielle agriculture, commerciales, à revenus et les délocalisations, nous sommes jeunes mais en croissance rapide grâce à un nombre croissant de clients satisfaits. Nous sommes fiers d'aider les familles à fermer la maison de leurs rêves, à sécuriser des actifs judicieux pour des investisseurs avisés et à aider les entreprises florissantes à realiser ton propre jardain dans des endroits manifique.
         </p>
         <p>
-          BLVD Realty Group would love to establish a lasting relationship with
-          you and meet all your real estate needs and dreams both now and in the
-          future. Our mission is to go beyond the typical major brokerage to
-          provide you with personalized, one-on-one support and give you an
-          enjoyable experience. We recognize that selling or purchasing the
-          right real estate can be stressful, so we remove that pressure,
-          enabling you to focus on other important aspects of life. We’ll
-          connect you with an agent who has a good understanding of what you
-          want in your new home, and wants to help you find a place that matches
-          your criteria and is tailored to your lifestyle. We take very
-          seriously our responsibility to find you the condo, house, or townhome
-          of your dreams, and our dedicated team of real estate professionals
-          will work tirelessly to help you get it. We also pride on our fast and
-          recommended service of selling your home quickly. Our competitive
-          marketing plan will win your heart. When you finish the home-buying or
-          selling process with us, we’re confident that you will
-          enthusiastically recommend BLVD Realty Group to your friends, family
-          and colleagues. We offer:
+        Mazertnaa  Group aimerait établir une relation durable avec vous et répondre à tous vos besoins , maintenant et à l'avenir. Notre mission est d'aller au-delà du grand courtage typique pour vous fournir un soutien personnalisé et individuel et vous offrir une expérience agréable. Nous reconnaissons que vendre ou acheter le bon bien agriculture peut être stressant, c'est pourquoi nous supprimons cette pression, vous permettant de vous concentrer sur d'autres aspects importants de la vie. Nous vous mettrons en contact avec un agent qui a une bonne compréhension de ce que vous voulez dans votre nouvelle maison et qui souhaite vous aider à trouver un endroit qui correspond à vos critères et qui est adapté à votre style de vie. Nous prenons très au sérieux notre responsabilité de vous trouver le condo, la maison ou la maison en rangée de vos rêves, et notre équipe dévouée de professionnels de  travaillera sans relâche pour vous aider à l'obtenir. Nous sommes également fiers de notre service rapide et recommandé de vendre votre maison rapidement. Notre plan de marketing compétitif gagnera votre cœur. Lorsque vous aurez terminé le processus d'achat ou de vente d'une maison avec nous, nous sommes convaincus que vous recommanderez avec enthousiasme Mazertnaa à vos amis, votre famille et vos collègues. Nous offrons:
         </p>
         <ul>
           <li>
-            Step-by-step, expert guidance through the entire selling or buying
-            process
+          Des conseils d'experts étape par étape tout au long du processus de vente ou d'achat
           </li>
           <li>
-            Advice and support choosing the best notary, inspectors, and
-            mortgage professionals
+          Conseil et accompagnement dans le choix des meilleurs notaires, inspecteurs et professionnels hypothécaires
           </li>
-          <li>Market analyses for sellers</li>
-          <li> Extensive property appraisals</li>
-          <li> Professional negotiation of contract terms and pricing</li>
-          <li> Detailed knowledge of the market and area</li>
-          <li>Caring, trustworthy, professional service</li>
+          <li>Analyses de marché pour les vendeurs</li>
+          <li>Évaluations Agriculture  approfondies</li>
+          <li>Négociation professionnelle des conditions contractuelles et des prix</li>
+          <li>Connaissance détaillée du marché et de la région
+    Un service professionnel, digne de confiance et attentionné</li>
         </ul>
-        BLVD Realty Group is pleased to provide full service to our customers.
-        Let us help you realize your real estate dream. Big or small, we’re
-        eager to serve you in these areas: Montreal, West Island, Laval, South
-        Shore, Monteregie, Laurentians, Sherbrooke, Gatineau. All our properties
-        are listed on the MLS (Multiple Listing Service) and are seen by all
-        other agencies in Montreal. Come find out why BLVD Realty Group was the
-        first choice for hundreds of satisfied Montreal home owners.
+        BLVD Realty Group est heureux de fournir un service complet à nos clients. Laissez-nous vous aider à réaliser votre jardain de rêve . Grands ou petits, nous sommes impatients de vous servir dans ces régions: Tunisie, sousse , sfax et tous les autre regions. Toutes nos propriétés sont répertoriées sur le MLS (Multiple Listing Service)
       </div>
     );
   }

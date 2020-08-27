@@ -6,7 +6,7 @@ import Useritem from './useritems'
 export class GestionUser extends Component  {
    
     componentDidMount() {
-        this.props.Getalluser()
+       this.props.Getalluser()
     }
 
    recherche(){

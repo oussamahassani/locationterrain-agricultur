@@ -69,15 +69,11 @@ router.route("/annocefavorite").post( async (req, res) => {
   }
   });
   
-  router.route("/delateannocefavorite/:id").delete((req, res) => {
+  router.route("/delateannocefavorite/:id").delete((req, res,next) => {
     Favorite.findByIdAndDelete(req.params.id)
     .then(() => res.json("annonce favorit deleted."))
 
   })
-  router.route("/allannoncefavorite").get((req, res) => {
-    Favorite.find()
-      .then(fav => res.json(fav))
-      .catch(err => res.status(400).json("Error: " + err));
-  });
+ 
 
   module.exports = router

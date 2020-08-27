@@ -1,6 +1,6 @@
 import {
     sendemessage,getmessage,updatemessage,updatemessagedelate,updateconversation,
-    updatemessagedraft} from '../api/messagerie'
+    updatemessagedraft,sendsms} from '../api/messagerie'
 import swal from "sweetalert";
 import { GETTALLMESSAGE,GETALLANNONCEE,DELATEMESSAGE} from "./Type";
 import {getallannoce} from '../api/Annoce'
@@ -9,6 +9,17 @@ import Axios from 'axios'
 import Cookies from 'js-cookie'
 
 /* send message action */
+ export const sendSms = (message) => { console.log(message)
+    return  (dispatch) => 
+    sendsms(message)
+
+     .then(res => {console.log("message",res.data);
+        swal(res.data)})
+     .catch(err => console.log(err))
+     
+ }
+ /*SEND SMS */
+ /* send message action */
  export const sendemessages = (message) => { console.log(message)
     return  (dispatch) => 
     sendemessage(message)

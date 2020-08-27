@@ -3,16 +3,30 @@ let Messages = require("../models/messages.model");
 let User = require ("../models/user.model")
 const moment = require('moment');
 const { json } = require("body-parser");
+const Nexmo = require('nexmo');
 
-router.route("/sendemessage").post( async (req, res) => {
-    console.log("user message",req.body.message)
-    let to = ""
-    if( req.body.message.new)
+const nexmo = new Nexmo({
+    apiKey: '2e1259a1',
+    apiSecret: 'ClEMrVa4i6nOpijj',
+  });
+  router.route("/sendesms").post( async (req, res) => {
+      const num ="216"+req.body.message.subject 
+      const message =  req.body.message.body
+   const resulta =   nexmo.message.sendSms('21625143294', num , message)
+     
+    res.send(resulta)
+    }) 
+  
+  router.route("/sendmessage").post( async (req, res) => {
+    console.log("user message",req.body)
+    let to = req.body.message.to
+        if( req.body.message.new)
     {
   const user =  await User.find({email : req.body.message.to})
       if (user.length > 0)
       {
-        to= JSON.stringify(user[0]._id)
+          
+        to= user[0]._id
       }
       else
       {
@@ -20,11 +34,10 @@ router.route("/sendemessage").post( async (req, res) => {
       }
     }
     else {
-        to = message.to;
+        to = String(message.to);
     }
    
     const message = req.body.message
-    console.log(message)
     const deleted = message.deleted;
     const draft = message.draft;
     const read = message.read;
@@ -35,7 +48,7 @@ router.route("/sendemessage").post( async (req, res) => {
     const body = message.body;
     const fromreplay = message.fromreplay;
     const repalymessage = message.repalymessage;
-      
+      console.log(from , body,to)
     const newmessage = new Messages({
         deleted,
         read,
