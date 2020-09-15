@@ -1,9 +1,14 @@
 import React from "react";
 import ModalMessage from './modelmessage'
 import Senddraftcompose from './senddraftcompose'
+import Slidebar from '../compossant/Slidebar'
 export const InboxHtml = ({ parent }) => {
   return (
+    <div className="d-flex">
+      <Slidebar />
     <main className="px-2 flex-fill">
+      <br></br>
+      <h4>Boite messagerie</h4>
       <div className="row">
         <div className="col-12 px-4 d-flex flex-column">
           <div className="row">
@@ -19,7 +24,7 @@ export const InboxHtml = ({ parent }) => {
                 <div className="nav nav-pills py-2 flex-md-column justify-content-center">
                   <a
                     href={{ void: 0 }}
-                    className="colormessage active"
+                     className="text-dark active"
                     title="Messages"
                     data-toggle="tab"
                     data-target="#messages"
@@ -37,9 +42,10 @@ export const InboxHtml = ({ parent }) => {
                       }
                     </span>
                   </a>
+                
                   <a
                     href={{ void: 0 }}
-                    className="colormessage"
+                    className="text-dark"
                     title="Deleted"
                     data-toggle="tab"
                     data-target="#deleted"
@@ -55,7 +61,7 @@ export const InboxHtml = ({ parent }) => {
                   </a>
                   <a
                     href={{ void: 0 }}
-                    className="colormessage"
+                   className="text-dark"
                     title="enregistrer"
                     data-toggle="tab"
                     data-target="#enregistrer"
@@ -344,6 +350,7 @@ export const InboxHtml = ({ parent }) => {
         </div>
       </div>
     </main>
+    </div>
   );
 };
 

@@ -3,12 +3,34 @@
     --secondaire : #fffafa;
     --therd : #28a745  ;
 }
+.colorprimaire{
+  color: #3cb371 !important;
+}
+
+.with400px{
+  width: 650px;
+}
+h4 , .bloglirplus{
+  color: var(--therd);
+}
+.marginuser{
+  margin: 5px;
+}
+.cardfavoriteuser{
+  float:right;
+  border: none;
+  background: none;
+  position: absolute;
+  left: 380px;
+}
+.card-header{
+  padding: 0px;
+}
 .bagroundvavbar{
     background-color:  #ffff ;
-    box-shadow: 2px 9px 10px -3px rgba(0,0,0,0.75);
--webkit-box-shadow: 2px 9px 10px -3px rgba(0,0,0,0.75);
--moz-box-shadow: 2px 9px 10px -3px rgba(0,0,0,0.75);
-height: 130px;
+    box-shadow: 1px 5px 10px -3px rgba(0,0,0,0.25);
+-webkit-box-shadow: 2px 5px 10px -3px rgba(0,0,0,0.25);
+-moz-box-shadow: 2px 5px 10px -3px rgba(0,0,0,0.25);
 }
 
 .textalign{
@@ -362,7 +384,7 @@ top: -50px;
 }
 .bagroundcolor-slider{
     background-color: #333;
-    width: 290px;
+    width: 350px;
  }
 /*end slidebar */
 
@@ -498,17 +520,17 @@ canvas {
 }
 
 .team-item1 {
-    width: 40%;
-    height: 550px;
+    width: 30%;
+
 }
 .bgcolorsliderbar{
-    height: 550px;
+    height: 650px;
     width: 290px;
     background-color: #333; 
 }
 .team-item2 {
     width: 500px;
-    height: 500px;
+ 
 }
 
 .main-container > div {
@@ -630,7 +652,9 @@ border: 1px solid black;
 .product-grid6{font-family:'Open Sans',sans-serif;text-align:center;position:relative;transition:all .5s ease 0s}
 .product-grid6:hover{box-shadow:0 0 10px rgba(0,0,0,.3)}
 .product-grid6 .product-image6 a{display:block}
-.product-grid6 .product-image6 img{width:100%;height:auto;transition:all .5s ease 0s}
+.product-grid6 .product-image6 img{width:150px;height:100px;transition:all .5s ease 0s}
+.product-grid6 .product-image6 img:hover{width:180px;height:180px;transition:all .5s ease 0s}
+
 .product-grid6:hover .product-image6 img{transform:scale(1.1)}
 .product-grid6 .product-content{padding:12px 12px 15px;transition:all .5s ease 0s}
 .product-grid6:hover .product-content{opacity:0}
@@ -669,4 +693,22 @@ border: 1px solid black;
 
 .row{
   margin-bottom: 2%;
+}
+
+.table-bordered td, .table-bordered th {
+  border: 2px solid #b4b8bb;
+}
+.app-calendar{
+  width: 850px;
+  padding: 20px;
+  margin-left: 20px;
+}
+
+.markercluster-map { height: 90vh; 
+background-color: var(--therd);
+background-size: 200px;
+}
+.borderadd{
+  border: 0.5px solid var(--principla);
+  padding: 15px;
 }

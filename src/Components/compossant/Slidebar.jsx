@@ -10,7 +10,7 @@ class Sidebar  extends Component {
   {
 
     return (
-        < div className="bagroundcolor-slider">
+        < div className="bagroundcolor-slider col-md-2">
        
        <div class="row" id="body-row">
  
@@ -19,7 +19,7 @@ class Sidebar  extends Component {
         <ul className="list-group">
       
             <li className="list-group-item sidebar-separator-title text-muted d-flex align-items-center menu-collapsed">
-                <small>MENU</small>
+                <small className=" text-center" style={{width : "100%"}}>MENU</small>
             </li>
           
             <a href="#submenu1" data-toggle="collapse" aria-expanded="false" className="bg-dark list-group-item list-group-item-action flex-column align-items-start">
@@ -31,21 +31,31 @@ class Sidebar  extends Component {
             </a>
           
             <div id='submenu1' className="collapse sidebar-submenu">
-            {Cookies.get("typeuser") == "admin"?   <NavLink to="/statestique" className="list-group-item list-group-item-action bg-dark text-white">
-                    <span className="menu-collapsed">Statestique</span>
-             </NavLink>  : null }
-            {Cookies.get("typeuser") =="admin"?     <NavLink to="/gestionuser" className="list-group-item list-group-item-action bg-dark text-white">
-                    <span className="menu-collapsed">Gestion utilisateur</span>
-    </NavLink> : null }
+            
+             
     { Cookies.get("typeuser") =="demandeur"?       <NavLink className="list-group-item list-group-item-action bg-dark text-white" exact activeClassName="active" to="/listefavorite">
                 Liste favorite
               </NavLink> : null }
               {/* <a href="/listefavorite" class="list-group-item list-group-item-action bg-dark text-white">
                     <span class="menu-collapsed">Liste favorite</span>
     </a>*/}
-              {Cookies.get("typeuser") =="proprietaire"?  <NavLink to="/gestionannonce"  activeClassName="active"  className="list-group-item list-group-item-action bg-dark text-white">
+              {Cookies.get("typeuser") =="admin"?  <>
+              <NavLink to="/gestionannonce"  activeClassName="active"  className="list-group-item list-group-item-action bg-dark text-white">
                     <span className="menu-collapsed">Gestion annonces</span>
-             </NavLink> : null }
+             </NavLink>
+             <NavLink to="/gestionuser" className="list-group-item list-group-item-action bg-dark text-white">
+                    <span className="menu-collapsed">Gestion utilisateur</span>
+    </NavLink> 
+    <NavLink to="/statestique" className="list-group-item list-group-item-action bg-dark text-white">
+                    <span className="menu-collapsed">Statestique</span>
+             </NavLink> 
+             <NavLink to="/Produitcontenaire" className="list-group-item list-group-item-action bg-dark text-white">
+                    <span className="menu-collapsed">Gestion Produit</span>
+             </NavLink> 
+             <NavLink to="/TestRoute" className="list-group-item list-group-item-action bg-dark text-white">
+                    <span className="menu-collapsed">Gestion Expair</span>
+             </NavLink> 
+              </>: null }
               { Cookies.get("typeuser") =="proprietaire"? <NavLink  to="/mesannonce" activeClassName="active" className="list-group-item list-group-item-action bg-dark text-white">
                     <span className="menu-collapsed">Mes annonces</span>
                 </NavLink> : null }
@@ -60,7 +70,7 @@ class Sidebar  extends Component {
          
             <div id='submenu2' className="collapse sidebar-submenu">
                 <NavLink to={`/userprofil/${Cookies.get("_id")}`} className="list-group-item list-group-item-action bg-dark text-white">
-                    <span className="menu-collapsed">Settings</span>
+                    <span className="menu-collapsed">Modifer</span>
                 </NavLink>
                
             </div>
@@ -73,7 +83,7 @@ class Sidebar  extends Component {
             </a>
             */ }
             <li className="list-group-item sidebar-separator-title text-muted d-flex align-items-center menu-collapsed">
-                <small>OPTIONS</small>
+                <small  className="text-center" style={{width : "100%"}}>OPTIONS</small>
             </li>
         
             <a href="/calender" className="bg-dark list-group-item list-group-item-action">
@@ -94,7 +104,7 @@ class Sidebar  extends Component {
             <a href="/Helper" className="bg-dark list-group-item list-group-item-action">
                 <div className="d-flex w-100 justify-content-start align-items-center">
                     <span className="fa fa-question fa-fw mr-3"></span>
-                    <span className="menu-collapsed">Help</span>
+                    <span className="menu-collapsed">Astuces</span>
                 </div>
             </a>
             {/*

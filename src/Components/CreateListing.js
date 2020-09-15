@@ -5,12 +5,13 @@ import Cookies from 'js-cookie'
 import { postannoce } from '../action/Annonce'
 import {connect} from 'react-redux'
 import swal from "sweetalert";
+import Sidebar from '../Components/compossant/Slidebar'
 import 'react-toastify/dist/ReactToastify.css';
 class CreateListing extends Component {
   state = {
     image:'',
     price:'', 
-    espace:'', 
+    espace:'materielle', 
     longitude:'', 
     altitude:'', 
     typelocation:'',
@@ -79,7 +80,7 @@ class CreateListing extends Component {
         {
           if (description.length>10)
           {
-            if(postalCode.length>6)
+            if(postalCode.length>5)
       this.props.postannoce(property)
       else
       swal("error!", "le code postal doit etre plus 6  Number" , "error")
@@ -165,15 +166,18 @@ checkFileSize=()=>{
   render() {
     
     return (
-      <div className="marginpage">
+      <div className="flexflex"><Sidebar/>
+      <div style={{margin:"auto"}}>
+        
       <div className="container">
+      <h3 className="title-container">Ajouter Annonce</h3>
            <div className="form-group">
  {/*  <ToastContainer />*/}
   </div> 
-  <div className="row justify-content-md-center">
+  <div className="row justify-content-md-center borderadd">
         <form onSubmit={this.handleSubmit}>
         <div className="row">
-    <div className="col">
+    <div className="col-md-6">
     <label >Photo d'annonce:</label>
 
     
@@ -200,7 +204,8 @@ checkFileSize=()=>{
             ref={this.imageName}
           />{" "}  <button type="button" className="btn btn-success" onClick={()=> this.onClickHandler()}>Upload</button> 
           </div>
-          <div className="col">
+          <div className="col-md-6">
+          <label for="Price">Prix  </label><br/>
           <input
           required
             type="number"
@@ -211,43 +216,48 @@ checkFileSize=()=>{
           <br />
           <div className="row">
           <div className="col">
+           {this.state.typebien =="Terre"  ? <><label for="Price">Espace  </label>
           <input
           required
             type="text"
             name="espace"
             placeholder="Espace"
             onChange={this.handleChange}
-          />{" "} m²
+          />{" "} m² </> : null}
           </div>
           <div className="col">
+          <label for="longitude">Longitude  </label>  <br/>
           <input
           required
-            type="number"
+            type="String"
             name="longitude"
             placeholder="Longitude"
             onChange={this.handleChange}
           />{" "}</div></div>   <br />
           <div className="row">
            <div className="col">
+           <label for="longitude">Altitude  </label>  <br/>
           <input
           required
-            type="number"
+            type="String"
             name="altitude"
             placeholder="Altitude"
             onChange={this.handleChange}
           />{" "}</div>
       <div className="col">
+      <label for="Rue">Rue  </label>   <br/>
           <input
           required
             type="text"
             name="street"
-            placeholder="Street"
+            placeholder="Rue"
             onChange={this.handleChange}
           />{" "}
           </div></div>
           <br />
           <div className="row">
            <div className="col">
+           <label for="Ville">Region  </label>  <br/>
           <input
           required
             type="text"
@@ -257,6 +267,7 @@ checkFileSize=()=>{
           />{" "}
           </div>
         <div className="col">
+          <label>Ville</label>  <br/>
           <select   name="province" onChange={this.handleChange}>
 	<option selected="selected" value="">Ville</option>
 	<option value="Beja">Beja</option>
@@ -292,9 +303,10 @@ checkFileSize=()=>{
           <br />
           <div className="row">
           <div className="col">
+          <label for="Code Postal">code Postale  </label>  <br/>
           <input
           required
-            type="text"
+            type="Number"
             name="postalCode"
             placeholder="Code Postal"
             onChange={this.handleChange}
@@ -302,12 +314,16 @@ checkFileSize=()=>{
           </div>
        
           <div className="col">
+          <label for="Type de location">Type location  </label>
+          <br/>
+
           <select  name="typelocation" onChange={this.handleChange}>
           <option value="Pourcentage">Pourcentage</option>
 	<option value="Location">Location</option>
           </select>
           </div>
           <div className="col">
+          <label for="Type de de bien">Type Bien</label> <br/>
           <select  name="typebien" onChange={this.handleChange}>
           <option selected="selected" value="">Type bien</option>
 	<option value="Terre">Terre</option>
@@ -319,8 +335,8 @@ checkFileSize=()=>{
           </div>  <br />
           <div className="row">
 
-          <label className="col">Description</label>
-          <div className="justify-content-md-center">
+          <label className="col-md-5">Description</label>
+          <div className="justify-content-md-center col-md-5">
         
           <textarea
             name="description"
@@ -331,6 +347,7 @@ checkFileSize=()=>{
           <input  class ="btn btn-success" type="submit" value='Ajouter annonce' />
         </form>
         </div>
+      </div>
       </div>
       </div>
     );

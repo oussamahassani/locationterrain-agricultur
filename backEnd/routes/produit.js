@@ -10,7 +10,6 @@ router.route("/allProduit").get((req, res) => {
 
 router.route("/addnewproduit").post((req, res) => {
  
-  console.log(req.body)
 
   const Titel = req.body.Titel;
   const Prix = req.body.Prix;
@@ -43,7 +42,7 @@ router.route("/Produit/:id").get((req, res) => {
 router.delete("/delateProduit/:id",async (req, res) => {
   
   try {
-    console.log(req.params.id)
+ 
     const produit = await Produit.findByIdAndDelete(req.params.id) 
     res.header('Access-Control-Allow-Origin', req.headers.origin);
     if (!produit) return res.status(404)
@@ -56,15 +55,16 @@ catch(error){
 
 })
 router.route("/updateeProduit/:id").patch((req, res) => {
+
   try{
-  const Produit = req.body
- 
-  Produit.findByIdAndUpdate(req.params.id ,Produit._id)
+  const produit = req.body
+ console.log('ok',produit,req.params.id)
+  Produit.findByIdAndUpdate(req.params.id ,produit)
         .then(() => res.json("Produit updated!"))
         .catch(err => res.status(400).json("Error: " + err));
   }
         catch (error) {
-          res.status(500).send("serveur error")
+          res.status(200).send(error)
         }
    
 });

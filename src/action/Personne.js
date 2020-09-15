@@ -28,7 +28,8 @@ export const login = (email , pass) => {
 export const signup = (newuser) =>  { return (dispatch) => 
     apipersonne.registeruser(newuser)
     .then(res => {console.log(res)
-        swal("Good job!", "Votre donner donner a eté enregistrer", "success");
+        swal("Good job!", "Votre donner donner a eté enregistrer", "success")
+        .then(Personne => window.location.reload())
     
     })
     .catch(err => console.log(err) )
@@ -69,3 +70,17 @@ export const gettalluser = (paylod) =>  ({
     type : personne.GETALLPERSONNE,
     paylod
 })
+
+/*auth user */ 
+export const getoneauthuser = (id) => { return (dispatch) => 
+    apipersonne.getoneuserfromdb(id)
+    .then(res =>  { console.log(res.data)
+        dispatch(getauthuser(res.data))
+    })
+    .catch(err => console.log(err))
+
+} 
+export const getauthuser =  (paylod) => ({
+    type:personne.AUTHEUSER,
+    paylod
+ })

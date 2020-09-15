@@ -42,6 +42,7 @@ const nexmo = new Nexmo({
     const draft = message.draft;
     const read = message.read;
     const from = message.from;
+   const  fromid = message.fromid;
     const fromAddress = message.fromAddress;
     const subject = message.subject;
     const dtSent = moment().format("DD/MM/YYYY, h:mm:ss a") ;
@@ -55,6 +56,7 @@ const nexmo = new Nexmo({
         to,
         draft,
         from,
+        fromid,
         fromAddress,
         subject,
         dtSent,
@@ -71,7 +73,7 @@ const nexmo = new Nexmo({
 
 router.route("/getmessage/:id").get((req, res) => {
 
-    Messages.find({ to: req.params.id })
+    Messages.find({ $or:[{to: req.params.id},{fromid: req.params.id}]   })
         .then(mes => {res.json(mes)})
         .catch(err => res.json(err))
 

@@ -29,3 +29,16 @@ export const DELATEMESSAGE = "DELATEMESSAGE";
 /*Produit */
 export const  GETALLProduit="GETALLProduit";
 export const DELATEProduit= "DELATEProduit";
+/*PANNIER */
+export const GETALLFROMPANIER="GETALLFROMPANIER";
+export const DELATEPRODUITFROMPANIER="DELATEPRODUITFROMPANIER"
+export const ADDNEWPRODUIT ="ADDNEWPRODUIT"
+
+
+/*Curent user  */
+export const AUTHEUSER = "AUTHEUSER"
+
+
+/* expaire */
+export const GETALLEXPAIR = "GETALLEXPAIR"
+export const DELETEEXPAIR = "DELETEEXPAIR"

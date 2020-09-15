@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import ContactUs from './ContactUs'
 import AboutMe from './AboutMe'
-import NosProduit from '../market-place/nosProduit'
+import DernierProduit from '../market-place/dernierProduit'
 import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
+import Partenair from '../Expair/nospartenair'
+import Allannonce from '../maps/MultiMap'
 class Home extends Component {
   render() {
     return (
@@ -99,10 +101,16 @@ class Home extends Component {
     
 </OwlCarousel>
 <br></br>
-<NosProduit/>
+
+<Allannonce/>
 <br></br>
-<ContactUs/>
+<DernierProduit/>
+<br></br>
 </div>
+<Partenair/>
+<br/><br/>
+<ContactUs/>
+
 </div>
    )
   }

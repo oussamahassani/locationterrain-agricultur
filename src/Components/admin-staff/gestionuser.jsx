@@ -8,12 +8,17 @@ export class GestionUser extends Component  {
     componentDidMount() {
        this.props.Getalluser()
     }
-
+state= {
+    filter : []
+}
    recherche(){
-   
-  
+ 
+  this.setState({filter : this.props.personne.filter(el=> el.Nom ==this.state.recherche || el.email ==this.state.recherche )})
    }
-
+   onchange(e){
+       const recherche = e.target.value
+    this.setState({recherche:recherche})
+   }
       
       
     render() {
@@ -30,8 +35,8 @@ export class GestionUser extends Component  {
     
   </div>
   <div className="ui input">
-  <input type="text" placeholder="name,email,role ou poste  ocuper" onChange={(e) => this.onchange(e)}></input><button className="ui inverted primary button colorwhitee" onClick={() => this.recherche()}>Recherche</button>
-     </div>
+  <input type="text" placeholder="name,email" onChange={(e) => this.onchange(e)}></input><button className="btn btn-outline-success btn-sm" onClick={() => this.recherche()}>Recherche</button>
+     </div><br/>
        <table className="ui celled striped table">
            <thead>
                <tr><th   className="bagroundcolorred" colspan="7">
@@ -41,7 +46,7 @@ export class GestionUser extends Component  {
                    <tr><th>id User</th><th>Nom</th><th>Prenom</th><th>Email</th> <th>Status</th><th>Action</th></tr>
                </thead>
            <tbody>
-            {  this.props.personne.map(el => <Useritem  donner={el}/> ) 
+            {this.state.filter.length>0?this.state.filter.map(el=><Useritem  donner={el}/>)  : this.props.personne.map(el => <Useritem  donner={el}/> ) 
             
          
             }

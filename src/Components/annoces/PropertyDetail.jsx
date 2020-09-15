@@ -41,11 +41,12 @@ class PropertyDetail extends Component {
         {this.state.annonce ? this.state.annonce.map( annonce => <>
         <p className="textalign"> Numero annonce : {annonce.idannonce}</p>
     
-        <img src ={'../../image/'+ annonce.image} alt ="..." className="centre-image" width="250px" height="250px"></img>
+        <img src ={'../../image/'+ annonce.image} alt ="..." className="centre-image border border-success rounded" width="350px" height="250px"></img>
+        <br></br>
         <div class="row">
-    <div class="col-md-2"> <p className="textalign">Prix : {annonce.price }  DT</p></div>
-    <div class="col-md-3 offset-md-2">Espace : {annonce.espace} m²</div>
-    <div class="col-md-3 offset-md-2"> Province: : {annonce.province}</div>
+    <div class="col-md-2"> <p className="textalign"><b>Prix : </b>{annonce.price }  DT</p></div>
+    <div class="col-md-3 offset-md-2"><b>Espace :</b> {annonce.espace} m²</div>
+    <div class="col-md-3 offset-md-2"><b>Province: </b>  {annonce.province}</div>
   </div>
 
  

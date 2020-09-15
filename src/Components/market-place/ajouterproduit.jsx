@@ -4,6 +4,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import { PostProduitt } from '../../action/Produit'
 import {connect} from 'react-redux'
 import swal from "sweetalert";
+import Sidebar from '../compossant/Slidebar'
 import 'react-toastify/dist/ReactToastify.css';
 class CreateListing extends Component {
   state = {
@@ -138,15 +139,18 @@ checkFileSize=()=>{
   render() {
     
     return (
-      <div className="marginpage">
+      <div className="flexflex">
+        <Sidebar/>
+      <div className="borderadd" style={{margin:"auto"}}>
       <div className="container">
+      <h3 className="title-container">Ajouter Produit</h3>
            <div className="form-group">
  {/*  <ToastContainer />*/}
   </div> 
   <div className="row justify-content-md-center">
         <form onSubmit={this.handleSubmit}>
         <div className="row">
-    <div className="col">
+    <div className="col-md-6">
     <label >Photo Produit:</label>
 
     
@@ -173,17 +177,19 @@ checkFileSize=()=>{
             ref={this.imageName}
           />{" "}  <button type="button" className="btn btn-success" onClick={()=> this.onClickHandler()}>Upload</button> 
           </div>
-          <div className="col">
+          <div className="col-md-6">
+            <label for="Titel">Titre Produit</label><br/>
           <input
           required
             type="Text"
             name="Titel"
-            placeholder="Titel"
+            placeholder="Titre"
             onChange={this.handleChange}
           /></div></div>{" "}
           <br />
           <div className="row">
-          <div className="col">
+          <div className="col-md-6">
+          <label for="Prix"> Prix</label><br/>
           <input
           required
             type="text"
@@ -192,7 +198,8 @@ checkFileSize=()=>{
             onChange={this.handleChange}
           />{" "} DT
           </div>
-          <div className="col">
+          <div className="col-md-6">
+          <label for="Discount">Discount Produit</label><br/>
           <input
           required
             type="text"
@@ -205,8 +212,8 @@ checkFileSize=()=>{
            <br />
           <div className="row">
 
-          <label className="col">Description</label>
-          <div className="justify-content-md-center">
+          <label className="col-md-6">Description</label>
+          <div className="col-md-6">
         
           <textarea
             name="Description"
@@ -217,6 +224,7 @@ checkFileSize=()=>{
           <input  class ="btn btn-success" type="submit" value='Ajouter Produit' />
         </form>
         </div>
+      </div>
       </div>
       </div>
     );

@@ -89,7 +89,7 @@ render() {
   return (
     < div className="flexflex">
     <Sidebar  message = {this.props.message ? this.props.message.filter(el => !el.read  && !el.deleted ).length : null}/>
-    <div className="container">
+    <div className="container"  style={{ padding: 30 }}>
 
            <br/>
         <h4>Votre profile</h4>
@@ -130,7 +130,7 @@ render() {
           invalid={invalidFile} />
         </InputGroupAddon>     
         <span class="col-md-3 offset-md-3"></span>
-            <button className="col-md btn btn-outline-success" onClick={this.onClickHandler}>Upload file</button>
+            <button className="col-md btn btn-outline-success" onClick={this.onClickHandler}>Telecharger</button>
       </InputGroup>
       <br />
       <label>Nom {"  "}</label>
@@ -138,7 +138,7 @@ render() {
         <InputGroupAddon addonType="prepend">
        
           <InputGroupText>
-
+          <i className="fa fa-user" aria-hidden="true"></i>
 </InputGroupText>
 
         </InputGroupAddon >
@@ -191,7 +191,7 @@ render() {
       </div>
      
      )
-     : <p> user n'xiste pas </p>
+     : null
      }
       <br />
       <div className=" float-right w-50">

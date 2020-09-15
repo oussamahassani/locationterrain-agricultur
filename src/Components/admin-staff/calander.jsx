@@ -17,17 +17,16 @@ export default class DemoApp extends React.Component {
     calendarWeekends: true,
     calendarEvents: [
       // initial event data
-      { title: "Event Now", start: new Date() }
+      { title: "evenement du jour", start: new Date() }
     ]
   };
 
   render() {
     return (
-      <div className="demo-app">
-        <div className="demo-app-top">
-         
-        </div>
-        <div className="demo-app-calendar">
+      <div className="d-flex">
+        <Sidebar/>
+        <div >
+        <div className="app-calendar">
           <FullCalendar
             defaultView="dayGridMonth"
             header={{
@@ -41,6 +40,7 @@ export default class DemoApp extends React.Component {
             events={this.state.calendarEvents}
             dateClick={this.handleDateClick}
           />
+        </div>
         </div>
       </div>
     );

@@ -1,15 +1,16 @@
 import React, { Component } from "react";
 import { NavLink } from 'react-router-dom';
 import Cookies from 'js-cookie'
-import { getoneuser } from '../../action/Personne'
+import { getoneauthuser } from '../../action/Personne'
 import logo from '../../assest/logo.png'
 import swal from "sweetalert";
-
+import Pannier from '../market-place/panier'
 import { logout } from '../../utils'
 import { connect } from 'react-redux'
 class Navbar extends Component {
   componentDidMount() {
-  //this.props.getoneuser(Cookies.get("_id"))
+    if(Cookies.get("_id"))
+  this.props.getoneauthuser(Cookies.get("_id"))
   }
   verification() {
     swal("Are you sure you want to do this?", {
@@ -36,10 +37,10 @@ class Navbar extends Component {
     return (
       <>
      
-        <div  className={Cookies.get("jwt") ? "bagroundvavbar flex-betwen " : "bagroundvavbar"}>
-          <nav className="navbar navbar-expand-lg  ">
+        <div style={{background : '#eee'}}  className={Cookies.get("jwt")?"d-flex  justify-content-between bagroundvavbar" : null}>
+          <nav className={Cookies.get("jwt")? "navbar navbar-expand-lg  with400px  ":"navbar navbar-expand-lg bagroundvavbar  "}  style={{background : '#eee'}}>
 
-            <img src={logo} width="7%"  alt="logo" />
+            <img src={logo} width="100px"  alt="logo" />
             <a className="navbar-brand text-dark" href="#">
 
             </a>
@@ -76,11 +77,19 @@ class Navbar extends Component {
               </NavLink>
             </li>
                 <li className="nav-item">
-                  {Cookies.get("jwt") ? <NavLink className="nav-link text-dark" exact activeClassName="active" to="/admin">Home</NavLink> : <NavLink className="nav-link text-dark" exact activeClassName="active" to="/login">
+                  {Cookies.get("jwt") ? 
+                  <NavLink className="nav-link text-dark" exact activeClassName="active" to="/admin">Home</NavLink>
+                  
+                   : <NavLink className="nav-link text-dark" exact activeClassName="active" to="/login">
                     LogIn
+
               </NavLink>
+              
                   }
 
+                </li>
+                <li>
+                {Cookies.get("jwt") ?  <NavLink className="nav-link text-dark" exact activeClassName="active" to="/NosProduit"> Nos Produit</NavLink> : null }
                 </li>
 
               </ul>
@@ -88,14 +97,20 @@ class Navbar extends Component {
             </div>
 
           </nav>
+        
           <div >
-          <br/><br/>
-            <div className="" style={{ display: "flex" , width:"300px" }}>
-           
-            {Cookies.get("jwt") ? <button className="btn btn-danger" onClick={this.verification}>Deconecter</button> : null}
+          <br/>
+            <div style={{ display: "flex" , width:"400px" }}>
+  
+            
+            {Cookies.get("jwt") ? <>
+             <div ><Pannier/></div>
+             <span className="marginuser"></span>
+            <button className="btn navbar-brand" onClick={this.verification}>Deconecter</button> </>: null}
             {" "}
-            {Cookies.get("jwt") ?   <li class="dropdown listestyle-none">
-                <a href="#" class="dropdown-toggle text-dark" data-toggle="dropdown">User
+            <div className="user navbar-brand">
+            {Cookies.get("jwt") ?   <li class=" marginuser dropdown listestyle-none">
+                <a href="#" class="dropdown-toggle text-dark" data-toggle="dropdown">{this.props.personne.length > 0 ? this.props.personne[0].Nom : null}
                  </a>
 
                   <ul class="dropdown-menu listestyle-none">
@@ -114,6 +129,7 @@ Cookies.get("jwt") ? this.props.personne[0].Photo ? <img src={`../image/${this.p
                     </li>
                     </ul>
                     </li> : null }
+                    </div> {/* end user function */}
             </div>
             </div>
             </div>
@@ -125,11 +141,11 @@ Cookies.get("jwt") ? this.props.personne[0].Photo ? <img src={`../image/${this.p
 }
 const mapstatetoprops = (state) => ({
 
-              personne : state.personne
+              personne : state.Curentnow
  })
  const mapdispatchtoprops = (disptach) => ({
 
-              getoneuser : (id) => disptach(getoneuser(id)),
+  getoneauthuser : (id) => disptach(getoneauthuser(id)),
 
  
  })

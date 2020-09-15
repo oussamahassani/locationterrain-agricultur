@@ -21,6 +21,7 @@ import Cookies from 'js-cookie'
  /*SEND SMS */
  /* send message action */
  export const sendemessages = (message) => { console.log(message)
+
     return  (dispatch) => 
     sendemessage(message)
 
@@ -43,7 +44,9 @@ import Cookies from 'js-cookie'
  /* update statue read message */
  export const updatemessages = (id ) => { return (dispatch) => 
     updatemessage(id)
-    .then (res => {console.log(res.data)})
+    .then (res => {console.log(res.data)
+        //swal(res.data) })
+    })
     .catch(err => console.log (err))
 }
 export const updatemessagedrafts = (id) => { return (dispatch) => 
@@ -51,7 +54,7 @@ export const updatemessagedrafts = (id) => { return (dispatch) =>
     .then (res => {console.log(res) 
         swal("Good job!", res.data.msg, "success")
 .then((value) => {
-    window.location.reload(false);
+    window.location.reload();
 });
  })
     .catch(err => console.log (err))
@@ -72,7 +75,9 @@ paylod
 
  export const updatemessagesconversation = (id,donner) => { return (dispatch) => 
     updateconversation(id,donner)
-    .then(res => console.log(res.data))
+    .then(res => {console.log(res.data)
+        swal("Good job!", "message envoiyer", "success")}
+    )
     .catch(err => console.log(err))
  }
 

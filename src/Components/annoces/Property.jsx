@@ -18,10 +18,12 @@ class Property extends Component {
     return (
         <li class="basicList border-bottom border-top">
           <div className="flexflex">
-			<div className="marginpage paddingpage rounded border border-success"  > 
-        <button class="fa fa-heart-o hard-card btn" aria-hidden="true" title="ajouter au favorite" onClick={this.sendtofavorite}></button>
+			<div className="marginpage  rounded border border-success"  > 
+        
 				<div class="photoMask">
-					<img  src={"./image/"+this.props.el.image}  width="150px"/>
+        <button class="fa fa-heart-o hard-card btn addtofavorite" aria-hidden="true" title="ajouter au favorite" onClick={this.sendtofavorite}></button>
+					<img  src={"./image/"+this.props.el.image}  height="250px" width="180px"/>
+          
 				</div>
 			</div>
 			<div class="col-8_5 contBasicBox w-100" >

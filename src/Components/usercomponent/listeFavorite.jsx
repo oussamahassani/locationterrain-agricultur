@@ -68,10 +68,10 @@ onChangePage = data => {
   let rowsPerPage = [];
   rowsPerPage = this.state.favorite.slice(startIndex,endIndex + 1);
     return (
-      <div className="flexflex"> <Sidebar message = {this.props.message ? this.props.message.filter(el => !el.read  && !el.deleted ).length : null}/> 
+      <div className="flexflex"> <Sidebar message = {this.props.message ? this.props.message.filter(el => !el.read  && !el.deleted ).length : null}/>
       <div className="container">
         <br/>
-        <h4 className="text-center">Liste favorite</h4>
+        <h4 >Liste favorite</h4>
         <div className="flexflex">
 
        {      this.showannonce(rowsPerPage)          }

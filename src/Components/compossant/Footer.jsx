@@ -1,54 +1,70 @@
-import React from 'react'
+import React ,{Component} from 'react'
 import { NavLink} from 'react-router-dom';
-export default function Footer() {
+
+import MessengerCustomerChat from 'react-messenger-customer-chat'
+export default class Footer extends  Component{
+
+
+
+   render(){
+
     return (
       <>
-     <hr></hr>
-        <div className=" navbar-dark  fixedfooter bagroundvavbar">
-            <footer className="navbar navbar-expand-lg">
-           
-        <a className="navbar-brand text-dark" href="#">
-         Mazrettnaa
-        </a>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="nav navbar-nav ml-auto">
-            <li className="nav-item active">
-            <NavLink className="nav-link text-dark" exact activeClassName="active" to="/ContactUs">
-            Contact as
-              </NavLink>
-             
-            </li>
-          
-            <li className="nav-item">
-              <NavLink className="nav-link text-dark" to="/about">
-                AboutUs
-              </NavLink>
-            </li>
-            {/* <li className="nav-item">
-              <Link className="nav-link" to="/contact">
-                ContactUs
-              </Link>
-            </li> */}
-           
-          </ul>
-        </div>
+
+
+    
+      
+       
+
+      <div>
+    
+    {/* <MessengerCustomerChat
+    pageId="115817856920881"
+    appId="1427384250787818"
+ 
+  /> */}
+    
+  </div>
+      
+    
+        <div className=" fixedfooter bagroundvavbar" style={{background:"#eee"}}>
+            <footer className="d-flex justify-content-around align-items-center">
+     
+        <div class="col-md-4">
+      <h3 className="colorprimaire">A propos de Nous</h3>
+      <p>Mazrettnaa est une application pour location de materielle et .
+         terre agriculture aussi elle vous aidez a execez le metier de agriculture.</p>
+
+      </div>
+      <div class="col-md-4">
+        <br/>
+        <h3 className="colorprimaire" >Contact Info</h3>
+        <p><strong>Adress:</strong> 514 Rue chath bath tunise 7071
+</p>
+        <p><strong>Email:</strong> Contact@mazertetna.com</p>
+        <p><strong>Tel:</strong>  28 00 41 00</p></div>
+      <div class="col-md-2">
+      <br/>
+        <h3  className="colorprimaire" >Lien Rapide</h3>
+       
+        <p><a className="text-dark" exact activeClassName="active" href="./#ContactUs"> Contact as</a></p>
+        <p> <a className=" text-dark" href="./#aboutUs"> AboutUs </a> </p>
+        <p><a className="text-dark" exact activeClassName="active" href="./#team"> Nos expair</a></p>
+      </div>
+
+    
+ 
+       
      
       
       </footer> 
-      <p className="nav-link textalign text-dark">Projet chef d'oeuvre  simplon 2020</p>
+      <p className="nav-link textalign text-dark" style={{fontSize:"14px"}}>  <a className="navbar-brand text-dark" href="#">
+         Mazrettnaa
+        </a> Projet chef d'oeuvre  simplon 2020</p>
         </div>
         <hr></hr>
         </>
     )
+}
+
 }

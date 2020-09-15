@@ -6,9 +6,9 @@ import paginationFactory from "react-bootstrap-table2-paginator";
 import { Link, NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import swal from "sweetalert";
-
+import ModalUpdateProduit from './ModalUpdateProduit'
 import {deleteproduitt ,updateproduitt} from '../../action/Produit'
-import Mid from  '../compossant/modal'
+import Mid from  './modal'
 import filterFactory, { textFilter } from 'react-bootstrap-table2-filter';
 
 const { ExportCSVButton } = CSVExport;
@@ -61,7 +61,7 @@ const TableProduit = (props) => {
       sort: true,
      
       filter: textFilter({
-        placeholder: 'Prix'}),
+        placeholder: 'Titel'}),
       headerStyle: () => {
         return { width: "10%" };
       },
@@ -71,7 +71,7 @@ const TableProduit = (props) => {
       text: "Prix en DT",
       sort: true,
       filter: textFilter({
-        placeholder: 'Espace'}),
+        placeholder: 'Prix'}),
       headerStyle: () => {
         return { width: "10%" };
       },
@@ -82,7 +82,7 @@ const TableProduit = (props) => {
       text: "Remise",
       sort: true,
       filter: textFilter({
-        placeholder: 'Bien'}),
+        placeholder: 'Remise'}),
       headerStyle: () => {
         return { width: "10%" };
       },
@@ -92,7 +92,7 @@ const TableProduit = (props) => {
       text: "Description",
       sort: true,
       filter: textFilter({
-        placeholder: 'Type'}),
+        placeholder: 'Description'}),
       headerStyle: () => {
         return { width: "10%" };
       },
@@ -111,12 +111,10 @@ const TableProduit = (props) => {
       formatter: (rowContent, row) => {
         return (
           <div className="flex-bettwen">
+          <ModalUpdateProduit Produit={row}/>
             <Mid donner= {row} />
-            <Link to={"UpdateAnnonce/" + row._id}>
-              <button  className="btn btn-warning">
-              <i class="fa fa-pencil" aria-hidden="true"></i>
-              </button>
-            </Link>
+         
+           
 
              <button
               className="btn-danger"

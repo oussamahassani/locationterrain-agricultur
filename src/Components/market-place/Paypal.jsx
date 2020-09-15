@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 
        let PayPalButton = window.paypal.Buttons.driver('react', { React, ReactDOM });
 
-       export default class Main extends Component {
+       export default class Paypal extends Component {
 
             createOrder(data, actions) {
                 return actions.order.create({

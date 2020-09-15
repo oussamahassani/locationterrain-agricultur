@@ -40,7 +40,7 @@ function SectionCarousel() {
                       <div class="card-block">
                         <h4 class="card-title">Le piment d'Espelette</h4>
                         <p class="card-text">Si aujourd’hui, le Piment d’Espelette s’impose comme le symbole d’une région, il est également reconnu comme une épice d’exception en TUNISIE et à l’étranger est une étape fascinante </p>
-                        <a class="btn btn-default" target="_blank" href="https://www.aujardin.info/fiches/piment-espelette.php">Lire +</a>
+                        <a class="btn btn-default bloglirplus" target="_blank" href="https://www.aujardin.info/fiches/piment-espelette.php">Lire +</a>
                       </div>
                     </div>
                   </div>
@@ -51,7 +51,7 @@ function SectionCarousel() {
                       <div class="card-block">
                         <h4 class="card-title">Les meilleures plantes pour les tisanes</h4>
                         <p class="card-text">La nature nous offre matière à soigner nos petits maux quotidiens grâce aux plantes. Apprenons à mieux les connaître pour les utiliser à bon escient.</p>
-                        <a class="btn btn-default" target="_blank" href="https://www.aujardin.info/fiches/meilleures-plantes-pour-tisanes.php">Lire +</a>
+                        <a class="btn btn-default bloglirplus" target="_blank" href="https://www.aujardin.info/fiches/meilleures-plantes-pour-tisanes.php">Lire +</a>
                       </div>
                     </div>
                   </div>
@@ -63,7 +63,7 @@ function SectionCarousel() {
                         <h4 class="card-title">
                           Les plantes aphrodisiaques</h4>
                         <p class="card-text">Depuis des temps immémoriaux, les plantes sont nos alliées pour traiter les troubles les plus divers. La sexualité n'est pas en reste grâce aux pouvoirs des plantes</p>
-                        <a class="btn btn-default" target="_blank" href="https://www.aujardin.info/fiches/plantes-aphrodisiaques.php">Lire +</a>
+                        <a class="btn btn-default bloglirplus" target="_blank" href="https://www.aujardin.info/fiches/plantes-aphrodisiaques.php">Lire +</a>
                       </div>
                     </div>
                   </div>
@@ -76,7 +76,7 @@ function SectionCarousel() {
                           La culture du safran</h4>
                         <p class="card-text">
                           La culture du safran , Le safran est issu d'une plante que les jardiniers connaissent bien et qui n'est autre que le Crocus..est une étape fascinante dans la vie d'un jardinier</p>
-                        <a class="btn btn-default" target="_blank" href="">Lire +</a>
+                        <a class="btn btn-default bloglirplus" target="_blank" href="">Lire +</a>
                       </div>
                     </div>
                   </div>
@@ -94,7 +94,7 @@ function SectionCarousel() {
                         <h4 class="card-title">
                           Cultiver les mini légumes</h4>
                         <p class="card-text">En pots sur un balcon, dans un potager en carré ou sur des meubles de culture, les petits légumes.</p>
-                        <a class="btn btn-default" target="_blank" href="https://www.aujardin.info/fiches/cultiver-mini-legumes.php">Lire +</a>
+                        <a class="btn btn-default bloglirplus" target="_blank" href="https://www.aujardin.info/fiches/cultiver-mini-legumes.php">Lire +</a>
                       </div>
                     </div>
                   </div>
@@ -105,7 +105,7 @@ function SectionCarousel() {
                       <div class="card-block">
                         <h4 class="card-title">Cultiver les radis avec la lune</h4>
                         <p class="card-text">Il existe de nombreuses variétés de radis présentant des formes et des couleurs diverses,Quant à l'influence de la lune.</p>
-                        <a class="btn btn-default" target="_blank" href="https://www.aujardin.info/fiches/cultiver-radis-avec-lune.php">Lire +</a>
+                        <a class="btn btn-default bloglirplus" target="_blank" href="https://www.aujardin.info/fiches/cultiver-radis-avec-lune.php">Lire +</a>
                       </div>
                     </div>
                   </div>
@@ -117,7 +117,7 @@ function SectionCarousel() {
                         <h4 class="card-title">
                           Les plantes amies</h4>
                         <p class="card-text">Vous ne le savez peut être pas mais les plantes ont une influence les unes sur les autres. Ce constat est très intéressant dans le domaine du jardinage biologique</p>
-                        <a class="btn btn-default" target="_blank" href="#">Lire +</a>
+                        <a class="btn btn-default bloglirplus" target="_blank" href="#">Lire +</a>
                       </div>
                     </div>
                   </div>
@@ -129,7 +129,7 @@ function SectionCarousel() {
                         <h4 class="card-title">
                           Conserver les légumes en bocaux</h4>
                         <p class="card-text">L'été, les récoltes souvent abondent au potager et il est difficile de tout consommer. Une bonne solution consiste à conserver sa production </p>
-                        <a class="btn btn-default" target="_blank" href="">Lire+</a>
+                        <a class="btn btn-default bloglirplus" target="_blank" href="">Lire+</a>
                       </div>
                     </div>
                   </div>

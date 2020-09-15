@@ -11,6 +11,8 @@ let allfavorite = require ("./routes/Allgetfavorite")
 const withAuth = require('./routes/middlwaretoken');
 let message = require ("./routes/messages")
 let produit = require("./routes/produit")
+let pannier = require("./routes/pannier")
+let expair = require("./routes/expair")
 const Port = process.env.Port  || 4000
 app.use(cookieParser())
 require('events').EventEmitter.defaultMaxListeners = 25
@@ -38,6 +40,8 @@ app.use("/app",produit);
 app.use("/app",personne);
 app.use("/app",annonce);
 app.use("/app",allfavorite);
+app.use("/app",pannier)
+app.use("/app",expair)
   app.use("/app",withAuth,favorite);
 app.use("/app",withAuth,message)
 var storage = multer.diskStorage({

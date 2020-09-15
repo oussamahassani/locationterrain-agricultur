@@ -39,7 +39,7 @@ Axios.get(URL + `app/getcurentemail/${Cookies.get("_id")}`)
   if(nextProps.message!== prevState.messages ){
     //Perform some operation
    
-    return { messages: nextProps.message.filter(el => el.deleted ==false && el.draft ==false)  ,deleted: nextProps.message.filter(el => el.deleted ==true) ,draft: nextProps.message.filter(el => el.draft ==true &&  el.deleted ==false)   };
+    return { messages: nextProps.message.filter(el => el.deleted ==false && el.draft ==false)  ,deleted: nextProps.message.filter(el => el.deleted ==true) ,draft: nextProps.message.filter(el => el.draft ==true &&  el.deleted ==false && el.fromid ==Cookies.get("_id") )   };
   }
   else return null; // Triggers no change in the state
 }

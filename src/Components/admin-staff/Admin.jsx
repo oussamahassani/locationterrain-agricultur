@@ -58,15 +58,15 @@ class Admin extends Component {
             <td>{property.espace}</td>
             <td className="hide">{property.longitude}</td>
             <td className="hide">{property.altitude} </td>
-            <td className="hide">
+            <td width="20%"  className="hide">
               {property.province} {property.street} {property.city}{" "}
               {property.postalCode}
             </td>
-            <td><p style={{ width: "300px" }}>{property.description}</p></td>
-            <td className="flex-bettwen">
+            <td  width="20%"  ><p >{property.description}</p></td>
+            {Cookies.get("typeuser")!=="demandeur"? <td className="flex-bettwen">
               {Cookies.get("typeuser") == "proprietaire" ? <button
                 type="button"
-                className="btn btn-warning fa fa-pencil-square"
+                className="btn btn-warning rounded-circle fa fa-pencil-square"
                 style={{ width: 40 }}
                 aria-hidden="true"
                 onClick={() => this.updateannoce(property._id)}
@@ -75,7 +75,7 @@ class Admin extends Component {
               </button> : null}
 
               {Cookies.get("typeuser") == "demandeur" ? null : <button
-                className="btn btn-danger  fa fa-trash-o"
+                className="btn btn-danger rounded-circle  fa fa-trash-o"
                 aria-hidden="true"
                 onClick={() => this.onDelete(property._id)}
                 style={{ width: 40 }}
@@ -83,7 +83,7 @@ class Admin extends Component {
 
 
               </button>}
-            </td>
+            </td>:null}
           </tr>
         );
       })
@@ -118,19 +118,19 @@ class Admin extends Component {
     return (
 
       <div className="flexflex">
-      <Sidebar  message = {this.props.message ? this.props.message.filter(el => !el.read  && !el.deleted ).length : null}/>
+     <Sidebar  message = {this.props.message ? this.props.message.filter(el => !el.read  && !el.deleted ).length : null}/>
       <div className="main"  style={{ padding: 30 }} >
        <>
       <div>
       
-         <h1>Dernière annonce </h1>
+         <h4>Dernière annonce </h4>
       </div>
       <div style={{ paddingTop: 20 }}>
         {this.props.annonce.length < 1 ? (
           "Il n'y a pas d'annonces"
         ) : (
           <div className="table-responsive">
-          <table className="table table-bordered">
+          <table className="table table-striped table-bordered">
             <thead>
               <tr>
                 <th scope="col ">Image</th>
@@ -152,7 +152,7 @@ class Admin extends Component {
         )}
         <Pagination
         totalRecords={ this.props.annonce.length}
-        pageLimit={pageLimit || 3}
+        pageLimit={pageLimit || 5}
         initialPage={1}
         pagesToShow={5}
         onChangePage={this.onChangePage}

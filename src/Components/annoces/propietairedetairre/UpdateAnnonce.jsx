@@ -2,6 +2,7 @@ import React,{Component} from 'react';
 import { InputGroup, InputGroupAddon, InputGroupText, Input,Form,Label } from 'reactstrap';
 import {Getanonces,updateannoces} from '../../../action/Annonce'
 import {connect} from 'react-redux'
+import Slider from '../../compossant/Slidebar'
 let  donner = []
 class UpdateAnnonce  extends Component{
 
@@ -17,7 +18,10 @@ render() {
 donner = this.props.annoce.filter(annonce => annonce._id ==this.props.match.params.id)
 
   return (
-    <div className="container">
+    <div className="flexflex">
+      <Slider/>
+    
+    <div className="container" style={{ padding: 30 }}>
            <br/>
         <h4>Modifier annonce</h4>
      { donner.map( annonce => 
@@ -43,7 +47,7 @@ donner = this.props.annoce.filter(annonce => annonce._id ==this.props.match.para
       </InputGroup>
       <br />
       <Label >Type de bien : </Label>
-      <Input type="select" name="select"  >
+      <Input type="select" name="select"  onChange= {(e) => donner[0].typebien = e.target.value}  >
         <option value={annonce.typebien} selected>{annonce.typebien}</option>
        {annonce.typebien == "Materiel" ? null  : <option  value="Materiel">Materiel</option>}
        {annonce.typebien == "Terre" ? null  :  <option value="Terre">Terre</option>}
@@ -63,7 +67,7 @@ donner = this.props.annoce.filter(annonce => annonce._id ==this.props.match.para
         <Input placeholder="Altitude"  defaultValue={annonce.altitude} onChange= {(e) => donner[0].altitude = e.target.value}/>
       </InputGroup> <br/>
       <Label>type location</Label>
-      <Input type="select" name="select"  >
+      <Input type="select" name="select" onChange={(e) => donner[0].typelocation = e.target.value} >
          <option  value= {annonce.typelocation} > {annonce.typelocation}</option>
          {annonce.typelocation == "Pourcentage" ? null  :   <option value="Pourcentage"> Pourcentage</option>}
          {annonce.typelocation == "Location" ? null  :<option value="Location"> Location</option> }
@@ -84,6 +88,7 @@ donner = this.props.annoce.filter(annonce => annonce._id ==this.props.match.para
       <br/>
       <br />
       <br />
+    </div> 
     </div>
   );
 };

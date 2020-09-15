@@ -133,13 +133,13 @@ const MesannonceTableComponent = (props) => {
           <div className="flex-bettwen">
             <Mid donner= {row} />
             <Link to={"UpdateAnnonce/" + row._id}>
-              <button  className="btn btn-warning">
+              <button  className="btn btn-warning rounded-circle">
               <i class="fa fa-pencil" aria-hidden="true"></i>
               </button>
             </Link>
 
              <button
-              className="btn-danger"
+              className="btn-danger rounded-circle"
               onClick={() => handleClick( row)}
             >
 <i class="fa fa-trash" aria-hidden="true"></i>
@@ -154,15 +154,15 @@ const MesannonceTableComponent = (props) => {
 
   return (
     <Container >
-      <h2>Gestion Mes Annonce</h2>
-    <Col>
-                  <Link to="/createListing">
+      <h4>Gestion Mes Annonce</h4>
+      <Col>
+                  <Link to="createListing">
                     <button className="btn btn-success"  labelPosition="left">
                    
                       Ajouter une annonces
                     </button>
                   </Link>
-                </Col>
+      </Col> 
       {props.annonce.filter(annonce => annonce.idcreateur == Cookies.get('_id')).length > 0? (
         <ToolkitProvider
           bootstrap4

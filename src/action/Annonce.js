@@ -11,7 +11,8 @@ export const postannoce = (annonce) => {  return (dispatch) =>
     apiannonce.postannonce(annonce)
     .then(res => {console.log(res)
         dispatch(postnewannonce(annonce))
-        swal("Good job!", res.data, "success"); })
+        swal("Good job!", res.data, "success")
+        .then(annonce => window.location.reload()) })
     .catch(err => console.log(err))
 }
 export const delateannocee = (id) => { return (dispatch) =>
@@ -22,7 +23,9 @@ export const delateannocee = (id) => { return (dispatch) =>
 }
 export const updateannoces = (annonce) => { return  (dispatch) =>
     apiannonce.updateannonce(annonce)
-    .then(res => console.log(res.data))
+    .then(res => {
+        console.log(res.data);
+        swal("message",res.data)})
     .catch(err => console.log(err))
 }
  /* favorite annonce */

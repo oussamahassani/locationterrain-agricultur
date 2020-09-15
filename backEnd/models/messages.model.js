@@ -12,6 +12,7 @@ const messageSchema = new Schema(
     to : {     type:String,     required:true},
     idmessage: { type:Number},
     from: {type :String , required:true} ,
+    fromid: {type :String , required:true} ,
     fromAddress: {type :String},
     subject:{type :String,  required:true} ,
     dtSent: {type :String},

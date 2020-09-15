@@ -25,9 +25,9 @@ import {addtofavoriteannoce} from '../../action/Annonce'
 <h5>Propietaire :</h5> 
 {this.props.personne.map ( personne => <>
    <div class="row">
-   <div class="col-md-2"> <p className="textalign"> Nom : {personne.Nom }</p></div>
-   <div class="col-md-3 offset-md-2">Prenom : {personne.Prenom}</div>
-   <div class="col-md-3 offset-md-2"> Nom telephone :{personne.numtelephone}</div>
+   <div class="col-md-2"> <p className="textalign"><b> Nom :</b> {personne.Nom }</p></div>
+   <div class="col-md-3 offset-md-2"><b>Prenom : </b>{personne.Prenom}</div>
+   <div class="col-md-3 offset-md-2"> <b>Nom telephone :</b>{personne.numtelephone}</div>
  </div>
 
 
@@ -40,7 +40,7 @@ import {addtofavoriteannoce} from '../../action/Annonce'
 {this.props.email.email? <Email toemail = {personne.email}  user={this.props.email.email}/> : null}
 
 
- <a href={"/Addmessagerie/"+personne._id}><button className="btn btn-tchat">TCHAT <i class="fa fa-comments"></i></button> </a>
+ <a href={"/Addmessagerie/"+personne._id}><button className="btn btn-tchat"><b>SMS</b> <i class="fa fa-comments"></i></button> </a>
 </div>
 </div>
 <button  onClick={() => this.sendtofavorite()} className="btn btn-emailning float-right"> Ajouter au liste favorite</button>

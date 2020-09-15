@@ -103,7 +103,7 @@ router.route("/updateeannonces/:id").patch((req, res) => {
   const annonce = req.body
   console.log(annonce)
   Property.findByIdAndUpdate(req.params.id ,annonce)
-        .then(() => res.json("Property updated!"))
+        .then(() => res.json("annonce mis a jour"))
         .catch(err => res.status(400).json("Error: " + err));
   }
         catch (error) {

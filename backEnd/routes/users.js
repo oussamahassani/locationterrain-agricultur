@@ -162,7 +162,7 @@ router.post('/sendemail',async (req, res, next) => {
   router.post('/sendemailtoproprietaire',async (req, res, next) => {
     try{
       let donner = req.body.email
-      console.log(donner)
+     
         
       let content = `email: ${donner.email} \n  'nom et prenom' : ${donner.name} + {" "}   + ${donner.prenom} \n donner: ${donner.message} `;
     
@@ -179,10 +179,12 @@ router.post('/sendemail',async (req, res, next) => {
           res.json({
             msg: 'fail'
           })
+          console.log("erre",err)
         } else {
           res.json({
             msg: 'success'
           })
+          console.log("suuces",data)
         }
       })
     }

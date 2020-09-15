@@ -6,7 +6,7 @@ import { connect } from "react-redux";
  class AnnonceconetenairProretaire  extends Component {
     componentDidMount(){
 this.props.Getanonces()
-console.log("ok", this.props.Getanonces())
+
 }
     render() {
         return (

@@ -48,7 +48,7 @@ class Charts extends Component {
                 }
                 new Chart(myChartRef, {
                 
-                  type: 'line',
+                  type: 'bar',
                   data: {
                       //Bring in data
                       labels: ["Jan", "Feb", "March","Avril","Mai","juin","Juillet","Août","Sebtmbre","Octobre","Nouvembre","Decembre"],
@@ -91,10 +91,11 @@ class Charts extends Component {
   </div>
   </div>
   <div class="team-item2">
+    <br></br>
   <div >
   <PersoLineGraph/> 
       <div  class ="team-item2" style={{marginTop:"30px"}}>
-    
+      <h5 className="text-center"> statestique Annonce par moi</h5>
             <canvas   id="myChart"
                
                 ref={this.chartRef}
@@ -102,9 +103,12 @@ class Charts extends Component {
             />
       
         </div>
+    
  
   </div>
+  <br></br> <br></br>
   </div>
+ 
 </div>
      
    

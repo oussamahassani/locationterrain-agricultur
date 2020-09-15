@@ -13,11 +13,11 @@ function SectionExamples() {
         <Container>
           <Row className="example-page">
             <Col className="text-center" md="6">
-              <a href="examples/landing.html" target="_blank">
+              <a href="https://www.gerbeaud.com/jardin/jardinage_naturel/potager-bio-creation.php" target="_blank">
                 <img
                   alt="..."
                   className="img-rounded img-responsive"
-                  src={require("../../assest/img/examples/landing-page.png")}
+                  src={require("../../assest/img/examples/98292-3765.jpg")}
                   style={{ width: "100%" }}
                 />
               </a>
@@ -27,15 +27,15 @@ function SectionExamples() {
                 href="/landing-page"
                 target="_blank"
               >
-                Landing Page
+                Potager BIO
               </Button>
             </Col>
             <Col className="text-center" md="6">
-              <a href="examples/profile.html" target="_blank">
+              <a href="https://www.lovethegarden.com/fr-fr/article/mon-premier-potager" target="_blank">
                 <img
                   alt="..."
                   className="img-rounded img-responsive"
-                  src={require("../../assest/img/examples/profile-page.png")}
+                  src={require("../../assest/img/examples/163204417.jpg")}
                   style={{ width: "100%" }}
                 />
               </a>
@@ -45,8 +45,7 @@ function SectionExamples() {
                 href="/profile-page"
                 target="_blank"
               >
-                Profile Page
-              </Button>
+                Cree votre 1er Potager              </Button>
             </Col>
           </Row>
         </Container>

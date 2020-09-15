@@ -36,7 +36,7 @@ render () {
                   <td>{this.props.donner.altitude}</td>
                   <td>{this.props.donner.longitude}</td>
                   <td>{this.props.donner.province}</td>
-                  <td> <img src={"image/" + this.props.donner.image} alt='image' width="40px"></img></td>
+                  <td> <img src={"image/" + this.props.donner.image} alt='image' width="80px"></img></td>
                   <td>{this.props.donner.street}</td>
                   <td>{this.props.donner.postalCode}</td>
                   <td>{this.props.donner.datecreation.slice(0,10)}</td> </tr>

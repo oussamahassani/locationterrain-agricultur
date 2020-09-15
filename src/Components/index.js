@@ -1,7 +1,9 @@
+ /* admin */
 export { default  as Admin } from './admin-staff/Admin'
 export {default as GestionUser} from './admin-staff/gestionuser'
 export {default as GestionDesannonce} from './admin-staff/annoncecontenaire'
 export {default as Calander} from './admin-staff/calander'
+
 /*usser */
 export {default as UserProfil} from './usercomponent/user-profiles'
 /*annonce */ 
@@ -42,3 +44,7 @@ export {default as BoiteMessagerie} from './Messagerie/boite-messagerie'
 export {default as NosProduit} from './market-place/nosProduit'
 export {default as Produitcontenaire} from './market-place/containerproduct'
 export {default as ajouterproduit} from './market-place/ajouterproduit'
+export {default as Pannier} from './market-place/panier'
+/* expair */
+
+export { default as Addexpaire } from './Expair/ajouterExpair'

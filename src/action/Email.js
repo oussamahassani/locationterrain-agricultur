@@ -4,18 +4,18 @@ import swal from "sweetalert";
  export const sendemaill = (email) => { return  (dispatch) => 
    sendemail(email)
     .then(res => {console.log(res.data);
-      if (res.data.msg ="fail")
+      if (res.data.msg =="fail")
       swal("error!", "votre message ne peut pas envoiyer merci de réessayer plus tard!", "error");
-      else if (res.data.msg="success")
+      else if (res.data.msg=="success")
       swal("Good job!", "votre email eté envoiyer avec suceé", "success");
     })
     .catch(err => console.log(err))
 }
 export const sendemailtoproprietairee = (email) => { return (dispatch) => sendemailtoproprietaire(email)
 .then(res =>  {
-  if (res.data.msg ="fail")
+  if (res.data.msg == "fail")
   swal("error!", "votre message ne peut pas envoiyer merci de réessayer plus tard!", "error");
-  else if (res.data.msg="success")
+  else if (res.data.msg == "success")
   swal("Good job!", "votre email eté envoiyer avec suceé", "success");
 
 

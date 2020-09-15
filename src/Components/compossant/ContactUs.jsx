@@ -32,11 +32,11 @@ const  onchangenotrobot = (value) =>  {
   
     const sendformcontact = () => {
    props.sendemaill(obj)
-      alert(`${obj.name} + ${obj.email}`)
+   //   alert(`${obj.name} + ${obj.email}`)
     }
     return (
         <div>
-            <section className="counts section-bg" id="contact">
+            <section className="counts section-bg" id="ContactUs">
     <h3 className="titrepargrape">Contactez-nous</h3>
     <div className="container" style={{backgroundColor:"#FFFFFF" ,padding:"50px"}}>
 

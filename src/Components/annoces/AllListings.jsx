@@ -48,28 +48,53 @@ class AllListings extends Component {
  
   static getDerivedStateFromProps(nextProps, prevState) {
     if(nextProps.annoce!== prevState.properties ){
-     console.log("zomara")
       return { properties: nextProps.annoce };
     }
     else return null; // Triggers no change in the state
   }
   rechercheannonce = (espace,prix,ville) => {
     console.log("message" , espace  , prix ,ville)
- if(prix!==""  )
-   {
-   const a =  this.state.properties.filter(el => el.price == prix)
-   this.setState({recherche: a})
-  }
- if( espace !== "" )
+    if( ville!=="" && prix !=="")
   {
-  const a =  this.state.properties.filter(el => el.espace == espace)
+  const a =  this.state.properties.filter(el => el.province == ville && el.price == prix) 
   this.setState({recherche : a})
   }
- if( ville!=="")
+   else if ( ville!=="")
   {
   const a =  this.state.properties.filter(el => el.province == ville)
   this.setState({recherche : a})
   }
+ else if(prix!==""  )
+   {
+     console.log("prix",prix)
+   const a =  this.state.properties.filter(el => el.price == prix)
+   this.setState({recherche: a})
+  }
+ else if( espace !=="" )
+  {
+    if (espace == 500)
+    {
+  const a =  this.state.properties.filter(el => el.espace < espace )
+  this.setState({recherche : a})
+    }
+  if (espace ==1500)
+  {
+  const a =  this.state.properties.filter(el => el.espace >500 && el.espace <= 1500 )
+  this.setState({recherche : a})
+  }
+  if(espace == 3000)
+  {
+  const a =  this.state.properties.filter(el => el.espace > 1500 && el.espace <= espace )
+  this.setState({recherche : a})
+  }
+  if (espace == 5001)
+  {
+    const a  = this.state.properties.filter(el => el.espace > 5000 )
+    this.setState({recherche : a})
+  }
+  }
+ 
+  
   if(ville=="" &&  espace=="" && prix=="")
   {
   //this.props.Getanonces()

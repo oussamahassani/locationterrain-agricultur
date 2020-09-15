@@ -55,11 +55,11 @@ export default class Recherche extends Component {
  
                         <select className="col-lg-3" onChange = {this.change}  name="espace" onChange={this.change} value={this.state.espace}>
 	<option selected="selected" value="">Espace</option>
-	<option value="500"> 500  m² =&#x3E;</option>
-	<option value="1500"> 1500 m² =&#x3E;</option>
-	<option value="3000">3000 m² =&#x3E; </option>
-	<option value="5000">5000 m² =&#x3E; </option>
-	<option value="5000">  5000 m² =&#x3E;</option>
+	<option value="500"> 500  m² =&#x3E; 1 m²</option>
+	<option value="1500"> 1500 m² =&#x3E; 501 m² </option>
+	<option value="3000">3000 m² =&#x3E; 1501 m²</option>
+	<option value="5000">5000 m² =&#x3E; 3001 m²</option>
+	<option value="5001">   &#x3E; 5000 m² </option>
 
 
 </select>

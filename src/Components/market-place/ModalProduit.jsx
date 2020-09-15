@@ -14,8 +14,8 @@ export class ModalProduit extends React.Component {
   render() {
     return (
         <>
-        <Button className="bagroundmessagenonlu" onClick={this.toggle}><i class="fa fa-search"></i>
-        </Button>
+        <a className="bagroundmessagenonlu" data-tip="plus du detail" onClick={this.toggle}><i class="fa fa-search"></i>
+        </a>
          <Modal isOpen={this.state.modal} toggle={this.toggle} size="lg" >
          <ModalHeader toggle={this.toggle} close={this.closeBtn}></ModalHeader>
          <ModalBody>

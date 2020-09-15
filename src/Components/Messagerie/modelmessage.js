@@ -54,7 +54,7 @@ export class ModalMessage extends React.Component {
                 
               </div>
               {this.props.message.repalymessage.map(el => <>
-              <span>{el.fromreplay}</span> <span>{el.repalymessage}</span> <br></br>
+              <span><strong>{el.fromreplay}:</strong></span>  <span>{el.repalymessage}</span> <br></br>
               </>
               )}
               </div>

@@ -7,6 +7,7 @@ import paginationFactory from "react-bootstrap-table2-paginator";
 import { Link, NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import swal from "sweetalert";
+import Cookies from 'js-cookie'
 import {
     delateannocee,updateannoces
 } from "../../action/Annonce";
@@ -123,11 +124,11 @@ const TableComponent = (props) => {
         return (
           <div className="flex-bettwen">
             <Mid donner= {row} />
-            <Link to={"UpdateAnnonce/" + row._id}>
+          {/*  <Link to={"UpdateAnnonce/" + row._id}>
               <button  className="btn btn-warning">
               <i class="fa fa-pencil" aria-hidden="true"></i>
               </button>
-            </Link>
+            </Link> */}
 
              <button
               className="btn-danger"
@@ -158,9 +159,9 @@ const TableComponent = (props) => {
           {(props) => (
 
             <div>
-              <h2>Gestion Annonce</h2>
+              <h4>Gestion Annonce</h4>
               <Row>
-                <Col>
+              {Cookies.get("typeuser") == "proprietaire" ?  <Col>
                   <Link to="/createListing">
                     <button className="btn btn-success"  labelPosition="left">
                    
@@ -168,6 +169,7 @@ const TableComponent = (props) => {
                     </button>
                   </Link>
                 </Col>
+                : null}
                 {/* <button><ExportCSVButton { ...props.csvProps }>Enregistrez</ExportCSVButton></button> */}
                 <Col>
                 <Link >

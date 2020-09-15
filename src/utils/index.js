@@ -1,5 +1,7 @@
 
 import Cookies from 'js-cookie'
+import Axios from 'axios'
+import {URL} from '../api/Url'
 export const login = (info) => {
     Cookies.set("typeuser",info.typeuser)
     Cookies.set("_id",info._id)
@@ -7,6 +9,10 @@ export const login = (info) => {
 }
 
 export const logout = () => {
+    const iduser =  Cookies.get('_id')
+    console.log(iduser)
+    Axios.delete(URL + "app/delateallproduit/"+iduser).
+    then(res => console.log(res))
     Cookies.remove('typeuser')
     Cookies.remove('jwt')
     Cookies.remove('_id')

@@ -80,7 +80,7 @@ let   anees = []
           return (
 
             <div>
-         
+          <h5 className="text-center"> statestique utilisateur par moi</h5>
                 <div>
               
                       <canvas   id="myChart"

@@ -18,6 +18,6 @@ export  const getallproduit= Axios.get(URL+"app/allProduit")
 export const postproduit = (Produit) =>Axios.post(URL+"app/addnewproduit", Produit)
 export const deleteproduit = (id) => Axios.delete(URL+`app/delateProduit/${id}`)
 
-export const updateproduit = (Produit ) => Axios.patch(URL +`app/updateeProduit/${Produit[0]}`,config)
+export const updateproduit = (Produit ) => Axios.patch(URL +`app/updateeProduit/${Produit.id}`,Produit,config)
 
 export const getonproduit = (id) => Axios.get(URL + `app/Produit/${id}`,config)

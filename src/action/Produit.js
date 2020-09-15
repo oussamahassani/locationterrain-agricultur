@@ -13,8 +13,13 @@ export const getallproduits = payload => ({
 })
 export const PostProduitt = (produit) => {  return (dispatch) =>
     apiproduit.postproduit(produit)
-    .then(res => {console.log(res)
-        swal("Good job!", res.data, "success"); })
+    .then(res => {console.log(res);
+        swal("Good job!", res.data, "success")
+        .then((value) => {
+            window.location.reload(false)
+          })
+})
+       
     .catch(err => console.log(err))
 }
 export const deleteproduitt = (id) => { return (dispatch) =>

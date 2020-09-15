@@ -21,11 +21,11 @@ const propertySchema = new Schema(
       required: true
     },
     longitude: {
-      type: Number,
+      type: String,
       required: true
     },
     altitude: {  
-      type: Number,
+      type: String,
       required: true
     },
     typelocation: {
